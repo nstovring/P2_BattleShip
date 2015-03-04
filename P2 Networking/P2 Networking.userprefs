@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NetWork\ConnectGuiMasterServer.js">
+    <Files>
+      <File FileName="Assets\NetWork\ConnectGuiMasterServer.js" Line="52" Column="48" />
+      <File FileName="..\..\Perforce\P2 MultiSurface\P2 Networking\Assets\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\NetWork\networkcam.js" Line="7" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,71 @@
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/Assets/_scenes.meta" "C:/Users/nstovring/Documents/P2 Networking/Assets/_scripts.meta" "C:/Users/nstovring/Documents/P2 Networking/Assets/_scripts/NetworkManager.cs" "C:/Users/nstovring/Documents/P2 Networking/Assets/_scripts/NetworkManager.cs.meta" "C:/Users/nstovring/Documents/P2 Networking/Assets/Cube.prefab" "C:/Users/nstovring/Documents/P2 Networking/Assets/Cube.prefab.meta" "C:/Users/nstovring/Documents/P2 Networking/Assets/Player.cs" "C:/Users/nstovring/Documents/P2 Networking/Assets/Player.cs.meta" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" 
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config projectPath = 'C:/Users/nstovring/Documents/P2 Networking'
+Set projectPath toC:/Users/nstovring/Documents/P2 Networking
+Got config vcPerforceUsername = 'nstovring'
+Got config vcSharedLogLevel = 'info'
+Set log level to info
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config projectPath = 'C:/Users/nstovring/Documents/P2 Networking'
+Set projectPath toC:/Users/nstovring/Documents/P2 Networking
+Got config vcPerforceUsername = 'nstovring'
+Got config vcSharedLogLevel = 'info'
+Set log level to info
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config projectPath = 'C:/Users/nstovring/Documents/P2 Networking'
+Set projectPath toC:/Users/nstovring/Documents/P2 Networking
+Got config vcPerforcePassword = '*'
+Got config vcPerforceServer = '1666'
+Got config vcPerforceUsername = 'nstovring'
+Got config vcPerforceWorkspace = 'P2_Networking'
+Got config vcSharedLogLevel = 'info'
+Set log level to info
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config projectPath = 'C:/Users/nstovring/Documents/P2 Networking'
+Set projectPath toC:/Users/nstovring/Documents/P2 Networking
+Got config vcPerforceHost = '1666'
+Got config vcPerforcePassword = '*'
+Got config vcPerforceServer = '1666'
+Got config vcPerforceUsername = 'nstovring'
+Got config vcPerforceWorkspace = 'P2_Networking'
+Got config vcSharedLogLevel = 'info'
+Set log level to info
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+Got config end = ''
+e32:TCP connect to 1666:1666 failed.\nNo such host is known. \n
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshAreas.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+e32:TCP connect to 1666:1666 failed.\nNo such host is known. \n
+Got config end = ''
+e32:TCP connect to 1666:1666 failed.\nNo such host is known. \n
+StatusCommand::Run()
+fstat  "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/AudioManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/DynamicsManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorBuildSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/EditorSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/GraphicsSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/InputManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshAreas.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NavMeshLayers.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/NetworkManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/Physics2DSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/ProjectSettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/QualitySettings.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TagManager.asset" "C:/Users/nstovring/Documents/P2 Networking/ProjectSettings/TimeManager.asset" 
+e32:TCP connect to 1666:1666 failed.\nNo such host is known. \n
