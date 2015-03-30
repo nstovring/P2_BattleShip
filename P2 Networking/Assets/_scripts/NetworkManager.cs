@@ -7,6 +7,7 @@ public class NetworkManager : MonoBehaviour {
 	private const string gameName = "P2 Networking";
 
 	public GameObject playerPrefab;
+	public GameObject target;
 
 	private HostData[] hostList;
 
@@ -49,6 +50,12 @@ public class NetworkManager : MonoBehaviour {
 				}
 			}
 		}
+		if(Network.isClient || Network.isServer){
+			if(GUI.Button(new Rect(100, 100 + (110), 300, 100), "Change Color")){
+				transform.GetComponent<NetworkView>().RPC("ChangeColor", RPCMode.All);
+				//.transform.GetComponent<Renderer>().material.color = Color.green;
+			}
+		}
 	}
 
 	private void RefreshHostList()
@@ -74,5 +81,10 @@ public class NetworkManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	[RPC]
+	void ChangeColor(){
+		target.transform.GetComponent<Renderer>().material.color = Color.green;
 	}
 }
