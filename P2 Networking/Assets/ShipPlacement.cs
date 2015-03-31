@@ -28,13 +28,18 @@ public class ShipPlacement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Network.isClient){
+		PlacingInteraction();
+		}
+	}
+	void PlacingInteraction(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray,out hit, 100)){
 			//print("Hit something");
 			if(hit.transform.tag == "GridSquare" && placingShip){
 				if(Input.GetMouseButtonDown(0)){
-					DeployShip(hit);
+					GetComponent<NetworkView>().RPC("DeployShip",RPCMode.All, hit.transform.position);
 					setPlacingShip(false);
 				}
 				print("Oooh yeah");
@@ -42,8 +47,12 @@ public class ShipPlacement : MonoBehaviour {
 		}
 	}
 
-	void DeployShip(RaycastHit hit){
-		GameObject clone = Instantiate(ships[selectedBoat],hit.transform.position,Quaternion.identity) as GameObject;
-		//clone
+	void DisplayGhostShip(){
+
+	}
+	[RPC]
+	void DeployShip(Vector3 hit){
+		GameObject clone = Network.Instantiate(ships[selectedBoat],hit,Quaternion.identity,0) as GameObject;
+		//clone.transform.name = clone.transform.name +" "+Network.player.ToString;
 	}
 }

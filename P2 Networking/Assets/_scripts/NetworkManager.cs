@@ -8,6 +8,8 @@ public class NetworkManager : MonoBehaviour {
 
 	public GameObject playerPrefab;
 	public GameObject target;
+	public static int playerCount = Network.connections.Length;
+
 
 	private HostData[] hostList;
 
@@ -19,13 +21,26 @@ public class NetworkManager : MonoBehaviour {
 	// Use this for initialization
 	void OnServerInitialized()
 	{
-		SpawnPlayer();
+		Camera.main.transform.GetComponent<CameraScript>().AssignServerCamera();
+		//SpawnPlayer();
 		Debug.Log("Server Initializied");
 	}
 	void OnConnectedToServer()
 	{
-		SpawnPlayer();
+		//SpawnPlayer();
 		Debug.Log("Server Joined");
+		Debug.Log("Player ID is " + Network.player.ToString());
+		playerCount = int.Parse(Network.player.ToString());
+		Debug.Log(playerCount);
+
+		Camera.main.transform.GetComponent<CameraScript>().AssignClientCamera(playerCount);
+
+	}
+	void OnPlayerConnected(NetworkPlayer player) {
+		Debug.Log("Player " + playerCount++ + " connected from " + player.ipAddress + ":" + player.port);
+
+
+
 	}
 	private void SpawnPlayer()
 	{
@@ -55,12 +70,12 @@ public class NetworkManager : MonoBehaviour {
 				}
 			}
 		}
-		if(Network.isClient){
+		/*if(Network.isClient){
 			if(GUI.Button(new Rect(100, 100 + (110), 300, 100), "Change Color")){
 				transform.GetComponent<NetworkView>().RPC("ChangeColor", RPCMode.All);
 				//.transform.GetComponent<Renderer>().material.color = Color.green;
 			}
-		}
+		}*/
 	}
 
 	private void RefreshHostList()
@@ -85,11 +100,11 @@ public class NetworkManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
-	[RPC]
-	void ChangeColor(){
-		target.transform.GetComponent<Renderer>().material.color = Color.green;
-	}
+	//[RPC]
+	//void ChangeColor(){
+		//target.transform.GetComponent<Renderer>().material.color = Color.green;
+	//}
 }
