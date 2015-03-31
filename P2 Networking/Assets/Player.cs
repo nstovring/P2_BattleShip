@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 	void Update()
 	{
 		if(GetComponent<NetworkView>().isMine){
+		//transform.GetComponent<NetworkView>().RPC("InputMovement", RPCMode.All);
 		InputMovement();
 		}
 	}
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
 			//rigidbody.position = syncPosition;
 		}
 	}
-	
+	//[RPC]
 	void InputMovement()
 	{
 		if(Input.GetAxis("Horizontal") > 0.1 ||Input.GetAxis("Horizontal") < 0.1 || Input.GetAxis("Vertical") > 0.1|| Input.GetAxis("Vertical") < 0.1){

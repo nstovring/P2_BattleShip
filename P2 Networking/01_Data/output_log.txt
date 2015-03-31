@@ -1,23 +1,26 @@
-Initialize engine version: 4.6.0f3 (30840d631a27)
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
     Renderer: Intel(R) HD Graphics Family (ID=0xa16)
     Vendor:   Intel
-    VRAM:     0 MB
+    VRAM:     896 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.121 seconds
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.085 seconds
+desktop: 1920x1080 59Hz; virtual: 1920x2160 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Platform assembly: C:\Users\nstovring\Documents\P2 Networking\01_Data\Managed\System.Core.dll (this message is harmless)
-Server Initializied
+<RI> Initialized touch support.
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\01_Data\Managed\System.Core.dll (this message is harmless)
+Server Joined
  
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 

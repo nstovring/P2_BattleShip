@@ -29,7 +29,12 @@ public class NetworkManager : MonoBehaviour {
 	}
 	private void SpawnPlayer()
 	{
+		if(Network.isClient){
 		Network.Instantiate(playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+		}
+		if(Network.isServer){
+			Network.Instantiate(playerPrefab, new Vector3(5f, 5f, 0f), Quaternion.identity, 0);
+		}
 	}
 	void OnGUI()
 	{
@@ -50,7 +55,7 @@ public class NetworkManager : MonoBehaviour {
 				}
 			}
 		}
-		if(Network.isClient || Network.isServer){
+		if(Network.isClient){
 			if(GUI.Button(new Rect(100, 100 + (110), 300, 100), "Change Color")){
 				transform.GetComponent<NetworkView>().RPC("ChangeColor", RPCMode.All);
 				//.transform.GetComponent<Renderer>().material.color = Color.green;
