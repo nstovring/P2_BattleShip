@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 // This class Creates the grid layout 
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 public class createLayout : MonoBehaviour {
 	public GameObject grid;
 	public int rows = 10;
@@ -17,7 +17,7 @@ public class createLayout : MonoBehaviour {
 			for(int j = 0; j < collumns; j++){
 				GameObject clone2 = Instantiate(grid,new Vector3(posX,0,posZ),Quaternion.identity) as GameObject;
 				clone2 .transform.parent = gameObject.transform;
-				clone2.transform.name = "Position: " + i+ ","+ j; 
+				clone2.transform.name = "Position: " + i+1+ ","+ j+1; 
 				posZ += grid.transform.localScale.z;
 			}
 			posX += grid.transform.localScale.x;

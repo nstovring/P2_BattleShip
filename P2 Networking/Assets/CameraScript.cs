@@ -12,7 +12,6 @@ public class CameraScript : MonoBehaviour {
 	void Start () {
 
 
-
 	}
 	public void AssignServerCamera(){
 		if(Network.isServer){
@@ -23,22 +22,17 @@ public class CameraScript : MonoBehaviour {
 			camera.orthographicSize = 14.38f;
 		}
 	}
+	//Supposed to give the player a camera view dependant on their id
 	public void AssignClientCamera(int playerNum){
-		AngleNum = playerNum;
-		//This does not work, i know not why, fuck everything
+		//AngleNum = playerNum;
+		//This does not work, i know not why, fuck everything -edit omg i figured it out, fuck everything
 		if(Network.isClient){
-		//Debug.Log(playerNum);
 			transform.position = CameraAngles[playerNum].position;
 			transform.rotation = CameraAngles[playerNum].rotation;
 		}
 	}
-	// Update is called once per frame
+	//works now because of reasons
 	void Update () {
-		//print(Network.connections.Length);
-		if(Network.isClient){
-			//Debug.Log(playerNum);
-			//transform.position = CameraAngles[AngleNum].position;
-			//transform.rotation = CameraAngles[AngleNum].rotation;
-		}
+
 	}
 }

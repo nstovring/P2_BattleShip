@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraScript.cs" />
+     <Compile Include="Assets\GridScript.cs" />
      <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\ShipPlacement.cs" />
      <Compile Include="Assets\_scripts\NetworkManager.cs" />

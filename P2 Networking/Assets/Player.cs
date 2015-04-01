@@ -3,14 +3,14 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-	private float lastSynchonizationTime = 0f;
+	/*private float lastSynchonizationTime = 0f;
 	private float syncDelay = 0f;
 	private float syncTime = 0f;
 	private Vector3 syncStartPosition = Vector3.zero;
 	private Vector3 syncEndPosition = Vector3.zero;
-
+	*/
 	public float speed = 10f;
-	
+
 	void Update()
 	{
 		if(GetComponent<NetworkView>().isMine){
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 		InputMovement();
 		}
 	}
-	void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info){
+	/*void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info){
 		Vector3 syncPosition = Vector3.zero;
 
 		if(stream.isWriting){
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 			syncEndPosition = syncPosition;
 			//rigidbody.position = syncPosition;
 		}
-	}
+	}*/
 	//[RPC]
 	void InputMovement()
 	{

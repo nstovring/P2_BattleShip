@@ -52,7 +52,7 @@ public class ShipPlacement : MonoBehaviour {
 	}
 	[RPC]
 	void DeployShip(Vector3 hit){
-		GameObject clone = Network.Instantiate(ships[selectedBoat],hit,Quaternion.identity,0) as GameObject;
+	 	 Network.Instantiate(ships[selectedBoat],hit,Quaternion.identity,0);
 		//clone.transform.name = clone.transform.name +" "+Network.player.ToString;
 	}
 }
