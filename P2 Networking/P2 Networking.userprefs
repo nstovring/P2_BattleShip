@@ -1,12 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ShipPlacement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GridScript.cs">
     <Files>
-      <File FileName="Assets\_scripts\NetworkManager.cs" Line="36" Column="84" />
-      <File FileName="Assets\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\ShipScript.cs" Line="28" Column="1" />
       <File FileName="Assets\createLayout.cs" Line="1" Column="1" />
-      <File FileName="Assets\ShipPlacement.cs" Line="43" Column="28" />
-      <File FileName="Assets\CameraScript.cs" Line="26" Column="67" />
+      <File FileName="Assets\_scripts\NetworkManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\ShipPlacement.cs" Line="47" Column="39" />
+      <File FileName="Assets\CameraScript.cs" Line="13" Column="3" />
+      <File FileName="Assets\GridScript.cs" Line="53" Column="24" />
+      <File FileName="Assets\shipScript.cs" Line="7" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

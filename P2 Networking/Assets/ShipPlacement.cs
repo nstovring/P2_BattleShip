@@ -28,9 +28,10 @@ public class ShipPlacement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Network.isClient){
+		//To ensure only clients are able to place ships
+		//if(Network.isClient){
 		PlacingInteraction();
-		}
+		//}
 	}
 	void PlacingInteraction(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -38,7 +39,13 @@ public class ShipPlacement : MonoBehaviour {
 		if (Physics.Raycast(ray,out hit, 100)){
 			//print("Hit something");
 			if(hit.transform.tag == "GridSquare" && placingShip){
-				if(Input.GetMouseButtonDown(0)){
+				//Gather the code from the currently targeted grid and the currently selected ship
+				shipScript ShipScript = ships[selectedBoat].GetComponent<shipScript>();
+				GridScript gridScript = hit.transform.GetComponent<GridScript>();
+
+				//If left mousebutton pressed and the grid is unoccupied
+				if(Input.GetMouseButtonDown(0) && !gridScript.getOccupied(ShipScript)){
+					//Send RPC Call to call the method DeployShip across the network
 					GetComponent<NetworkView>().RPC("DeployShip",RPCMode.All, hit.transform.position);
 					setPlacingShip(false);
 				}
