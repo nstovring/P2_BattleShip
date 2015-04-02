@@ -6,9 +6,8 @@ public class createLayout : MonoBehaviour {
 	public GameObject grid;
 	public int rows = 20;
 	public int collumns = 40;
-	//public GameObject[][] grids = new GameObject[rows][collumns];
 	public GridScript[,] grids;
-	//public GameObject[][] stuffs = new GameObject[10][];
+
 	// Use this for initialization
 	void Start () {
 		grids = new GridScript[rows,collumns];
@@ -33,8 +32,9 @@ public class createLayout : MonoBehaviour {
 		//Debug.Log(grids[10,10].ToString());
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
-	
+		//StartCoroutine(MakeGridsDistinguishable());
 	}
 }

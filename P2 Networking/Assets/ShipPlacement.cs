@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ShipPlacement : MonoBehaviour {
 	public GameObject[] ships = new GameObject[4];
+	public GameObject[] ghostShips = new GameObject[4];
+
 	private int selectedBoat;
 
 	float mouseWorldPosX;
@@ -42,9 +44,14 @@ public class ShipPlacement : MonoBehaviour {
 				//Gather the code from the currently targeted grid and the currently selected ship
 				shipScript ShipScript = ships[selectedBoat].GetComponent<shipScript>();
 				GridScript gridScript = hit.transform.GetComponent<GridScript>();
+				pGhostShipPos = ghostShips[selectedBoat].transform.position;
 
+				//GameObject clone = Instantiate(ships[selectedBoat],hit.transform.position,Quaternion.identity) as GameObject;
+				DisplayGhostShip(hit, gridScript);
 				//If left mousebutton pressed and the grid is unoccupied
 				if(Input.GetMouseButtonDown(0) && !gridScript.getOccupied(ShipScript)){
+					ghostShips[selectedBoat].transform.position = new Vector3(50,0,0);
+					//print ("THe fuck!!!");
 					//Send RPC Call to call the method DeployShip across the network
 					GetComponent<NetworkView>().RPC("DeployShip",RPCMode.All, hit.transform.position);
 					setPlacingShip(false);
@@ -53,13 +60,21 @@ public class ShipPlacement : MonoBehaviour {
 			}
 		}
 	}
-
-	void DisplayGhostShip(){
-
+	Vector3 pGhostShipPos;
+	void DisplayGhostShip(RaycastHit hit, GridScript gridScript){
+	 	shipScript ShipScript = ghostShips[selectedBoat].GetComponent<shipScript>();
+		if(!gridScript.getOccupied(ShipScript)){
+		ghostShips[selectedBoat].transform.position = hit.transform.position;
+		}
 	}
+	//void ReturnGhostShip(){
+	//
+	//}
+
 	[RPC]
 	void DeployShip(Vector3 hit){
-	 	 Network.Instantiate(ships[selectedBoat],hit,Quaternion.identity,0);
+		Network.Instantiate(ships[selectedBoat],hit,ghostShips[selectedBoat].transform.rotation,0);
+		//clone.transform.GetComponent<shipScript>().LockShip();
 		//clone.transform.name = clone.transform.name +" "+Network.player.ToString;
 	}
 }
