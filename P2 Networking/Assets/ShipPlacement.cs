@@ -26,9 +26,9 @@ public class ShipPlacement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//To ensure only clients are able to place ships
-		if(Network.isClient){
+		//if(Network.isClient){
 		PlacingInteraction();
-		}
+		//}
 	}
 	void PlacingInteraction(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
