@@ -49,7 +49,10 @@
      <Compile Include="Assets\CameraScript.cs" />
      <Compile Include="Assets\GridScript.cs" />
      <Compile Include="Assets\Player.cs" />
+     <Compile Include="Assets\ServerAttacking.cs" />
      <Compile Include="Assets\ShipPlacement.cs" />
+     <Compile Include="Assets\StateMachine.cs" />
+     <Compile Include="Assets\TargetMarker.cs" />
      <Compile Include="Assets\_scripts\NetworkManager.cs" />
      <Compile Include="Assets\createLayout.cs" />
      <Compile Include="Assets\gridOverlay.cs" />
