@@ -5,17 +5,13 @@ public class GridScript : MonoBehaviour {
 	public bool occupied = false;
 	private int row;
 	private int collumn;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
+	TextMesh[] childText;
+
 	// Update is called once per frame
 	void Update () {
 		if(occupied){
-			ChangeColor();
+			ChangeColor(Color.red);
 		}
-	
 	}
 	public void setRowCollumn(int row, int collumn){
 		this.row = row;
@@ -30,41 +26,33 @@ public class GridScript : MonoBehaviour {
 	public bool getOccupied(){
 		return occupied;
 	}
-	public void ChangeColor(){
-		GetComponent<MeshRenderer>().material.color = Color.red;
+	public void ChangeColor(Color color ){
+		MeshRenderer renderer = GetComponent<MeshRenderer>();
+		renderer.material.color = color;
 	}
-
+	
 	public bool getOccupied(shipScript shipScript){
 		//Get the createLayout script from the parent of this object
 		createLayout createLayout = transform.parent.GetComponent<createLayout>();
 		GridScript[,] grids = createLayout.grids;
-		bool tempOccupied = false;
+		bool tempOccupied = true;
 		for(int i = 0; i < shipScript.getGridInfluence(); i++){
-			//relative to this grids position in the grids array, this if statement will check wether or not the grid below or above and next to it is occupied
-			if(shipScript.currentRotation == 0){
-				if(!grids[row,collumn+i].getOccupied() && !grids[row + i,collumn].getOccupied()){
+			//relative to this grids position in the grids array, this if statement will check wether or not the grid below or above and 
+			//next to it is occupied as well as checking if the grid even exists
+			if(shipScript.GetRotation() == 1){
+				if(!grids[row- i,collumn].getOccupied() && !grids[row + i,collumn].getOccupied()){
 					tempOccupied = false;
+				}else{
+					return tempOccupied = true;
 				}
-			}else if(shipScript.currentRotation == 1){
-				if(!grids[row,collumn - i].getOccupied() && !grids[row - i,collumn].getOccupied()){
+			}else if(shipScript.GetRotation() == -1){
+				if(!grids[row,collumn - i].getOccupied() && !grids[row,collumn +i].getOccupied()){
 					tempOccupied = false;
+				}else{
+					return tempOccupied = true;
 				}
-			}else{
-				tempOccupied = true;
 			}
-			/*if(!grids[row,collumn+i].getOccupied() && !grids[row + i,collumn].getOccupied() && 
-			   !grids[row,collumn - i].getOccupied() && !grids[row - i,collumn].getOccupied()){
-				grids[row,collumn - i].ChangeColor();
-				grids[row,collumn + i].ChangeColor();
-				grids[row +i,collumn].ChangeColor();
-				grids[row - i,collumn].ChangeColor();
-				Debug.Log ("Geting here?");
-				tempOccupied = false;
-			}else{
-				tempOccupied = true;
-			}*/
 		}
-
 		return tempOccupied;
 	}
 }

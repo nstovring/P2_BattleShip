@@ -6,6 +6,7 @@ public class NetworkManager : MonoBehaviour {
 	private const string typeName = "UniqueGameName";
 	private const string gameName = "P2 Networking";
 
+	public createLayout[] Layouts = new createLayout[2];
 	public GameObject playerPrefab;
 	public GameObject target;
 	public static int playerCount = Network.connections.Length;
@@ -22,7 +23,9 @@ public class NetworkManager : MonoBehaviour {
 	void OnServerInitialized()
 	{
 		Camera.main.transform.GetComponent<CameraScript>().AssignServerCamera();
-		//SpawnPlayer();
+		for(int i = 0; i < Layouts.Length; i++){
+			Layouts[i].CreateLayout();
+		}
 		Debug.Log("Server Initializied");
 	}
 	void OnConnectedToServer()
@@ -31,16 +34,15 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log("Server Joined");
 		Debug.Log("Player ID is " + Network.player.ToString());
 		playerCount = int.Parse(Network.player.ToString());
-		Debug.Log(playerCount);
 
+		for(int i = 0; i < Layouts.Length; i++){
+			Layouts[i].CreateLayout();
+		}
 		Camera.main.transform.GetComponent<CameraScript>().AssignClientCamera(playerCount);
 
 	}
 	void OnPlayerConnected(NetworkPlayer player) {
 		Debug.Log("Player " + playerCount++ + " connected from " + player.ipAddress + ":" + player.port);
-
-
-
 	}
 	private void SpawnPlayer()
 	{
@@ -70,12 +72,6 @@ public class NetworkManager : MonoBehaviour {
 				}
 			}
 		}
-		/*if(Network.isClient){
-			if(GUI.Button(new Rect(100, 100 + (110), 300, 100), "Change Color")){
-				transform.GetComponent<NetworkView>().RPC("ChangeColor", RPCMode.All);
-				//.transform.GetComponent<Renderer>().material.color = Color.green;
-			}
-		}*/
 	}
 
 	private void RefreshHostList()
@@ -93,18 +89,5 @@ public class NetworkManager : MonoBehaviour {
 	{
 		Network.Connect(hostData);
 	}
-
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-	//[RPC]
-	//void ChangeColor(){
-		//target.transform.GetComponent<Renderer>().material.color = Color.green;
-	//}
 }
