@@ -9,21 +9,26 @@ public class CameraScript : MonoBehaviour {
 
 	public void AssignServerCamera(){
 		if(Network.isServer){
+			Screen.orientation = ScreenOrientation.LandscapeLeft;
 			transform.position = CameraAngles[0].position;
 			transform.rotation = CameraAngles[0].rotation;
 			Camera camera= GetComponent<Camera>();
 			camera.orthographic = true;
-			camera.orthographicSize = 11.18f;
+			camera.orthographicSize = 13.12f;
 		}
 	}
 	//Supposed to give the player a camera view dependant on their id
 	public void AssignClientCamera(int playerNum){
+		Screen.orientation = ScreenOrientation.Portrait;
 		//ternerary operator double check sometime
 		playerNum = playerNum > CameraAngles.Length ? CameraAngles.Length: playerNum;
 		//This does not work, i know not why, fuck everything -edit omg i figured it out, fuck everything learn to understand networkviews
 		if(Network.isClient){
 			transform.position = CameraAngles[playerNum].position;
 			transform.rotation = CameraAngles[playerNum].rotation;
+			Camera camera= GetComponent<Camera>();
+			camera.orthographic = true;
+			camera.orthographicSize = 10f;
 		}
 	}
 	//works now because of reasons

@@ -6,17 +6,7 @@ public class TargetMarker : MonoBehaviour {
 	public bool hit = false;
 	
 	void Update(){
-		/*MeshRenderer[] renderers=  GetComponentsInChildren<MeshRenderer>();
 
-		if(hit){
-		foreach(MeshRenderer renderer in renderers){
-			//renderer.material.shader = Shader.Find("Transparent/Diffuse");
-			Color color = renderer.material.color;
-			color = Color.red;
-			color.a = 50;
-			renderer.material.color = color;
-			}
-		}*/
 	}
 
 	[RPC]
