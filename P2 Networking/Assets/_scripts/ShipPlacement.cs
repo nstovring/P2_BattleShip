@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ShipPlacement : MonoBehaviour {
+public class ShipPlacement : StateMachine {
 	public GameObject[] ships = new GameObject[4];
 	public GameObject[] ghostShips = new GameObject[4];
 	public Button[] buttons = new Button[6];
@@ -10,6 +10,7 @@ public class ShipPlacement : MonoBehaviour {
 	private int[] availableShips = {1,2,1,1,1};
 
 	private int gridLayer = 1<< 8;
+	//private int gridLayer = 1<< 8;
 	//interesting stuff gotta investigate later
 	//gridLayer = ~gridLayer;
 
@@ -33,17 +34,22 @@ public class ShipPlacement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Disable or enable the rotate buttons depending on ship placement
+		if(Network.isServer){
+			for(int i = 0; i< buttons.Length; i++){
+				buttons[i].GetComponent<Image>().enabled = false;
+			}
+		}
 		buttons[4].interactable = !placingShip ? false: true;
 		buttons[5].interactable = !placingShip ? false: true;
 		//To ensure only clients are able to place ships
 	#if UNITY_EDITOR
-		//if(Network.isClient){
+		if(Network.isClient){
 		Placement();
-		//}
+		}
 	#elif UNITY_STANDALONE_WIN
-		//if(Network.isClient){
+		if(Network.isClient){
 		Placement();
-		//}
+		}
 	#elif UNITY_ANDROID
 		if(Network.isClient){
 		AndroidPlacement();
@@ -77,6 +83,7 @@ public class ShipPlacement : MonoBehaviour {
 				//If left mousebutton pressed and the grid is unoccupied
 				if(Input.GetMouseButtonDown(0) && !gridScript.getOccupied(ShipScript)){
 					//Send RPC Call to call the method DeployShip across the network for testing purposes
+
 					DeployShip();
 				}
 			}
@@ -97,9 +104,11 @@ public class ShipPlacement : MonoBehaviour {
 		}
 	}
 
-
+	//[RPC]
 	public void DeployShip(){
-		Instantiate(ships[selectedShip],ghostShips[selectedShip].transform.position,ghostShips[selectedShip].transform.rotation);
+		//Instantiate a ship at the position of the ghost ship
+		Network.Instantiate(ships[selectedShip],ghostShips[selectedShip].transform.position,ghostShips[selectedShip].transform.rotation,0);
+		//Move the ghost ship away
 		ghostShips[selectedShip].transform.position = new Vector3(50,0,0);
 		//Reduce amount of ships Avaliable
 		substractShip(1,selectedShip);

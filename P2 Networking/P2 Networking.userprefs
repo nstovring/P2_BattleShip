@@ -1,8 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\1stMayGameJam\1stMayGameJam\GameJam\Assets\Spawner.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CanvasController.cs">
     <Files>
-      <File FileName="..\1stMayGameJam\1stMayGameJam\GameJam\Assets\Spawner.cs" Line="8" Column="31" />
+      <File FileName="Assets\_scripts\ShipPlacement.cs" Line="37" Column="3" />
+      <File FileName="Assets\_scripts\CameraScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\NetworkManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\createLayout.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\StateMachine.cs" Line="22" Column="9" />
+      <File FileName="Assets\_scripts\shipScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\GridScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\ServerAttacking.cs" Line="32" Column="76" />
+      <File FileName="Assets\CanvasController.cs" Line="23" Column="70" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

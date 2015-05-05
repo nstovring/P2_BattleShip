@@ -5,6 +5,7 @@ public class ServerAttacking : MonoBehaviour {
 
 	public GameObject targetMarker;
 	public GameObject GhostTargetMarker;
+	private int gridLayer = 1<< 8;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class ServerAttacking : MonoBehaviour {
 	void SelectTarget(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
-		if (Physics.Raycast(ray,out hit, 100)){
+		if (Physics.Raycast(ray,out hit, 100,gridLayer)){
 			if(hit.transform.tag == "GridSquare"){
 
 				DisplayGhostMarker(hit);

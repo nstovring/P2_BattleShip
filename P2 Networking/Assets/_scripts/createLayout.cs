@@ -1,26 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 // This class Creates the grid layout 
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 public class createLayout : MonoBehaviour {
 	public GameObject grid;
 	public int rows = 20;
 	public int collumns = 40;
 	public GridScript[,] grids;
 	public bool gridToSquareSize = true;
+	public bool created = false;
 	public bool create = false;
 	public bool destroy = false;
-	// Use this for initialization
-	void Start () {
-		//CreateLayout();
 
-	}
-	void Awake () {
-		//CreateLayout();
-		
-	}
 	public void CreateLayout(){
-
 		float offsetSize = gridToSquareSize ? grid.transform.localScale.z : 1;
 		// A jagged array containg every single gridScript ingame
 		grids = new GridScript[rows,collumns];
@@ -46,7 +38,7 @@ public class createLayout : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(create){
+		if(create && !created){
 			CreateLayout();
 			create = false;
 		}

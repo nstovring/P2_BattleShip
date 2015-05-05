@@ -11,8 +11,11 @@ public class shipScript : MonoBehaviour {
 	public int currentRotation = -1;
 	float hitTime = 0;
 	public GameObject[] destroyedShips = new GameObject[4];
+	Renderer[] renderers;
 
 	void Awake(){
+		MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+
 		if(transform.tag == "Ship"){
 			LockShip();
 		}
@@ -48,6 +51,19 @@ public class shipScript : MonoBehaviour {
 			Debug.Log("Ship Destroyed");
 			Destroyed();
 		}
+		MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+
+		if(Network.isServer && health > 0){
+			//Renderer[] renderers = GetComponentsInChildren<Renderer>();
+			foreach(MeshRenderer renderer in renderers){
+				renderer.enabled = false;
+			}
+		}else{
+			foreach(MeshRenderer renderer in renderers){
+				renderer.enabled = true;
+			}
+		}
+
 		hitTime += Time.deltaTime;
 
 		if(!placed && Input.GetKeyDown(KeyCode.D)){
@@ -81,7 +97,7 @@ public class shipScript : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-		if(other.transform.tag == "GridSquare"){
+		if(other.transform.tag == "GridSquare" && Network.isClient){
 			other.GetComponent<GridScript>().setOccupied(true);
 		}
 		if(other.transform.tag == "TargetMarker"){
