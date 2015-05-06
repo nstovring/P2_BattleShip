@@ -3,6 +3,7 @@ using System.Collections;
 
 public class shipScript : MonoBehaviour {
 
+	public int Team;
 	public int health;
 	public int shipType;
 	public bool placed = false;
@@ -11,10 +12,14 @@ public class shipScript : MonoBehaviour {
 	public int currentRotation = -1;
 	float hitTime = 0;
 	public GameObject[] destroyedShips = new GameObject[4];
-	Renderer[] renderers;
+
+	public NetworkView nView;
+	NetworkPlayer creator;
+	void Start() {
+
+	}
 
 	void Awake(){
-		MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
 
 		if(transform.tag == "Ship"){
 			LockShip();
@@ -37,22 +42,12 @@ public class shipScript : MonoBehaviour {
 	public int GetRotation(){
 		return currentRotation;
 	}
-
-	[RPC]
-	//Create a destroyed version of itself on the server
-	public void Destroyed(){
-		Network.Instantiate(destroyedShips[shipType],transform.position,transform.rotation,0);
-		Destroy(gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(health <= 0 && transform.tag == "Ship"){
-			Debug.Log("Ship Destroyed");
-			Destroyed();
-		}
+	void OnNetworkInstantiate(NetworkMessageInfo info) {
+		nView = GetComponent<NetworkView>();
+		Debug.Log(nView.viewID + " spawned");
+		creator = info.sender;
 		MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-
+		
 		if(Network.isServer && health > 0){
 			//Renderer[] renderers = GetComponentsInChildren<Renderer>();
 			foreach(MeshRenderer renderer in renderers){
@@ -63,6 +58,26 @@ public class shipScript : MonoBehaviour {
 				renderer.enabled = true;
 			}
 		}
+	}
+
+	[RPC]
+	//Create a destroyed version of itself on the server
+	public void Destroyed(){
+
+		Network.Instantiate(destroyedShips[shipType],transform.position,transform.rotation,0);
+		Network.RemoveRPCs(nView.viewID);
+		Network.Destroy(gameObject);
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if(health <= 0 && transform.tag == "Ship"){
+			Debug.Log("Ship Destroyed");
+			nView.RPC("Destroyed",RPCMode.AllBuffered);
+			//Destroyed();
+		}
+
 
 		hitTime += Time.deltaTime;
 
@@ -90,6 +105,11 @@ public class shipScript : MonoBehaviour {
 	}
 	public void Hit(){
 		if(hitTime >= 0.5f){
+		//if(creator == Network.player){
+			#if UNITY_ANDROID
+			Handheld.Vibrate();
+			#endif
+		//}
 		setHealth(health-=1);
 			hitTime = 0;
 		}

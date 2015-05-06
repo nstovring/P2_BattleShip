@@ -33,6 +33,7 @@ public class ShipPlacement : StateMachine {
 	
 	// Update is called once per frame
 	void Update () {
+		//Network.player.ToString
 		//Disable or enable the rotate buttons depending on ship placement
 		if(Network.isServer){
 			for(int i = 0; i< buttons.Length; i++){
