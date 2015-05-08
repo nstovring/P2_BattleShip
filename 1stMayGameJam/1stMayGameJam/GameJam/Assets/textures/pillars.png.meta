@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 84afc44e5c1136843896768a2b0011cc
+timeCreated: 1430483642
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: pillars_0
+    21300002: pillars_1
+    21300004: pillars_2
+    21300006: pillars_3
+    21300008: pillars_4
+    21300010: pillars_5
+    21300012: pillars_6
+    21300014: pillars_7
+    21300016: pillars_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: pillars_0
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 730
+        width: 125
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_1
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 912
+        width: 542
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_2
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 730
+        width: 702
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 893
+        width: 64
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_4
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 893
+        width: 64
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 711
+        width: 9
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_6
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 708
+        width: 10
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 86
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pillars_8
+      rect:
+        serializedVersion: 2
+        x: 1833
+        y: 38
+        width: 87
+        height: 662
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

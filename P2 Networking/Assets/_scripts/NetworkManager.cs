@@ -6,11 +6,13 @@ public class NetworkManager : MonoBehaviour {
 	private const string typeName = "UniqueGameName";
 	private const string gameName = "P2 Networking";
 
+	public int thisPlayer;
 	public createLayout[] Layouts = new createLayout[2];
 	public GameObject playerPrefab;
 	public GameObject target;
 	public static int playerCount = Network.connections.Length;
-
+	//int state
+	public static NetworkPlayer[] players = new NetworkPlayer[4];
 
 	private HostData[] hostList;
 
@@ -34,7 +36,7 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log("Server Joined");
 		Debug.Log("Player ID is " + Network.player.ToString());
 		playerCount = int.Parse(Network.player.ToString());
-
+		thisPlayer = playerCount;
 		for(int i = 0; i < Layouts.Length; i++){
 			Layouts[i].CreateLayout();
 		}
@@ -43,16 +45,11 @@ public class NetworkManager : MonoBehaviour {
 	}
 	void OnPlayerConnected(NetworkPlayer player) {
 		Debug.Log("Player " + playerCount++ + " connected from " + player.ipAddress + ":" + player.port);
+		//player.ToString();
+		players[int.Parse(player.ToString())] = player;
+
 	}
-	private void SpawnPlayer()
-	{
-		if(Network.isClient){
-		Network.Instantiate(playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-		}
-		if(Network.isServer){
-			Network.Instantiate(playerPrefab, new Vector3(5f, 5f, 0f), Quaternion.identity, 0);
-		}
-	}
+
 	void OnGUI()
 	{
 		if (!Network.isClient && !Network.isServer)
