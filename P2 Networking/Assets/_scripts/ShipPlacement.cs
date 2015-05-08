@@ -6,17 +6,25 @@ public class ShipPlacement : StateMachine {
 	public GameObject[] ships = new GameObject[4];
 	public GameObject[] ghostShips = new GameObject[4];
 	public Button[] buttons = new Button[6];
+	public bool ready = false;
+	bool readySet = false;
 	//Amount of ships available
-	private int[] availableShips = {1,2,1,1,1};
-
+	public int[] availableShips = {1,2,1,1};
+	shipScript selectedShipScript;
 	private int gridLayer = 1<< 8;
 	//private int gridLayer = 1<< 8;
 	//interesting stuff gotta investigate later
 	//gridLayer = ~gridLayer;
-
+	GridScript gridScript;
+	RaycastHit hit;
 	private int selectedShip;
 
 	private bool placingShip = false;
+	[RPC]
+	public bool GetReady(){
+		return ready;
+	}
+
 
 	public void setPlacingShip(bool placing){
 		placingShip = placing;
@@ -30,16 +38,31 @@ public class ShipPlacement : StateMachine {
 	public int getSelectedBoat(){
 		return selectedShip;
 	}
+
+	public void setReady(bool _ready){
+		ready = _ready;
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Network.player.ToString
-		//Disable or enable the rotate buttons depending on ship placement
+
 		if(Network.isServer){
 			for(int i = 0; i< buttons.Length; i++){
 				buttons[i].GetComponent<Image>().enabled = false;
 			}
 		}
+
+		if(ready && !readySet){
+			//Disable place ship button
+			buttons[6].interactable = false;
+			Debug.Log("I am ready");
+			//Call CheckforReady method on the StateMachine
+			nView.RPC("CheckForReady", RPCMode.AllBuffered,1);
+			//Stop the ready boolean from turning true again
+			availableShips[0] = 1;
+			readySet = true;
+		}
+		//Rotate buttons only interactable if a ship is currently being placed
 		buttons[4].interactable = !placingShip ? false: true;
 		buttons[5].interactable = !placingShip ? false: true;
 		//To ensure only clients are able to place ships
@@ -57,7 +80,7 @@ public class ShipPlacement : StateMachine {
 		}
 	#endif
 	}
-	RaycastHit hit;
+
 	void AndroidPlacement(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -79,12 +102,11 @@ public class ShipPlacement : StateMachine {
 				//Gather the code from the currently targeted grid and the currently selected ship
 				shipScript ShipScript = ships[selectedShip].GetComponent<shipScript>();
 				GridScript gridScript = pcHit.transform.GetComponent<GridScript>();
-
+				selectedShipScript = ShipScript;
 				DisplayGhostShip(pcHit);
 				//If left mousebutton pressed and the grid is unoccupied
 				if(Input.GetMouseButtonDown(0) && !gridScript.getOccupied(ShipScript)){
 					//Send RPC Call to call the method DeployShip across the network for testing purposes
-
 					DeployShip();
 				}
 			}
@@ -95,17 +117,34 @@ public class ShipPlacement : StateMachine {
 	 	shipScript ShipScript = ghostShips[selectedShip].GetComponent<shipScript>();
 		GridScript gridScript = hit.transform.GetComponent<GridScript>();
 
+		if(gridScript.rotationPossible(ShipScript)&& RotateLeft){
+			ShipScript.RotateShipLeft();
+			RotateLeft = false;
+		}
+		if(gridScript.rotationPossible(ShipScript) && RotateRight){
+			ShipScript.RotateShipRight();
+			RotateRight = false;
+		}
 		if(!gridScript.getOccupied(ShipScript)){
 		ghostShips[selectedShip].transform.position = hit.transform.position;
 		}
 	}
+	public bool RotateRight;
+	public bool RotateLeft;
+
 	public void substractShip(int num, int _selectedShip){
 		if(availableShips[_selectedShip] > 0){
 			availableShips[_selectedShip] -= num;
 		}
 	}
 
-	//[RPC]
+	public void RotateShipLeft(){
+		RotateLeft = true;
+	}
+	public void RotateShipRight(){
+		RotateRight = true;
+	}
+
 	public void DeployShip(){
 		//Instantiate a ship at the position of the ghost ship
 		Network.Instantiate(ships[selectedShip],ghostShips[selectedShip].transform.position,ghostShips[selectedShip].transform.rotation,0);

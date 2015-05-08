@@ -3,21 +3,27 @@ using System.Collections;
 
 public class StateMachine : MonoBehaviour {
 
-	public bool shipPlacing;
+	public bool shipPlacing = true;
 	public bool miniGame;
 	public bool attacking;
+	//public static int teamTurn = 0;
+	public static int TeamTurn;
 	public static int State = 0; //Should be zero at start of a game
 	//State 0 is ShipPlacing State
 	//State 1 is Mini-Game State
 	//State 2 is Attacking State
-	NetworkView nView;
+	public NetworkView nView;
 	// Use this for initialization
 	void Start () {
+		//Get this objects NetworkView
 		nView = GetComponent<NetworkView>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//TeamTurn = teamTurn;
+		TeamTurn = TeamTurn >2 ? 2: TeamTurn;
+
 		if(shipPlacing){
 			nView.RPC("ChangeState", RPCMode.AllBuffered,0);
 			shipPlacing = false;
@@ -30,21 +36,35 @@ public class StateMachine : MonoBehaviour {
 			nView.RPC("ChangeState", RPCMode.AllBuffered,2);
 			attacking = false;
 		}
-		//shipPlacing = miniGame ? false : attacking ? false: shipPlacing;
-		//miniGame = shipPlacing ? false : attacking ? false: miniGame; 
-		//attacking = miniGame ? false : shipPlacing ? false: attacking; 
-		//Debug.Log("State is: " + State);
-		//State = shipPlacing ? 0 : miniGame ? 1: attacking ? 2 : State;
-		//State = shipPlacing ? 0 : State;
-		//State = miniGame ? 1 : State;
-		//State = attacking ? 2 : State;
+	}
+	int readyPlayers = 0; 
+	[RPC]
+	void CheckForReady(int playerReady){
+		Debug.Log ("Some is Ready:" + readyPlayers);
+		readyPlayers+= playerReady;
+		if(readyPlayers >= 2){
+			//Should be state 1 for real version
+		nView.RPC("ChangeState", RPCMode.AllBuffered,2);
+		nView.RPC("SetTeamTurn", RPCMode.AllBuffered,1);
+			//TeamTurn = 1;
+		}
 	}
 
+	//Sets the state variable
 	[RPC]
 	public void ChangeState(int state){
 		State = state;
 	}
 
+	[RPC]
+	public void SetTeamTurn(int turn){
+		TeamTurn = turn;
+	}
+	public int GetTeamTurn(){
+		return TeamTurn;
+	}
+
+	//Reload scene method for debugging
 	private void ReloadScene(){
 		if(Network.isClient){
 			Network.Disconnect();

@@ -4,7 +4,7 @@ using System.Collections;
 public class TargetMarker : MonoBehaviour {
 
 	public bool hit = false;
-	
+	public GameObject explosion;
 	void Update(){
 
 	}
@@ -24,5 +24,6 @@ public class TargetMarker : MonoBehaviour {
 
 	public void ChangeColor(){
 		GetComponent<NetworkView>().RPC("NetWorkChangeColor",RPCMode.AllBuffered);
+		Network.Instantiate(explosion,transform.position,Quaternion.identity,0);
 	}
 }

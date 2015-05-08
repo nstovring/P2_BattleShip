@@ -28,14 +28,14 @@ public class shipScript : MonoBehaviour {
 
 	public void RotateShipLeft(){
 		float addRotation = transform.localRotation.y; 
-		addRotation+= 90;
-		transform.Rotate(new Vector3(0,addRotation,0));
+		addRotation = 90;
+		transform.RotateAround(transform.position, Vector3.up, addRotation);
 		currentRotation *= -1;
 	}
 	public void RotateShipRight(){
 		float addRotation = transform.localRotation.y; 
-		addRotation-= 90;
-		transform.Rotate(new Vector3(0,addRotation,0));
+		addRotation = -90;
+		transform.RotateAround(transform.position, Vector3.up, addRotation);
 		currentRotation *= -1;
 	}
 
@@ -49,7 +49,6 @@ public class shipScript : MonoBehaviour {
 		MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
 		
 		if(Network.isServer && health > 0){
-			//Renderer[] renderers = GetComponentsInChildren<Renderer>();
 			foreach(MeshRenderer renderer in renderers){
 				renderer.enabled = false;
 			}

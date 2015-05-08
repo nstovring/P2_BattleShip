@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CameraScript : StateMachine {
 
 
-	public int TeamTurn = 0;
+	//public int TeamTurn = 0;
 	Touch touch;
 	public CanvasScaler canvasScaler;
 	int AngleNum;
@@ -39,12 +39,12 @@ public class CameraScript : StateMachine {
 	}
 
 	void Update(){
+		if(Network.isServer){
+			AnimationMovement();
+		}
 		#if UNITY_EDITOR
 		if(Network.isClient){
 		UnityMovement();
-		}
-		if(Network.isServer){
-			AnimationMovement();
 		}
 		#elif UNITY_STANDALONE_WIN
 		if(Network.isClient){
@@ -60,7 +60,6 @@ public class CameraScript : StateMachine {
 	}
 
 	void AnimationMovement(){
-		TeamTurn = TeamTurn >2 ? 2: TeamTurn;
 		canvasScaler.matchWidthOrHeight = 0.9f;
 		transform.position = Vector3.Lerp(transform.position, CameraAngles[TeamTurn].position, 0.1f);
 		transform.rotation = Quaternion.Lerp(transform.rotation, CameraAngles[TeamTurn].rotation, 0.1f);
@@ -90,7 +89,8 @@ public class CameraScript : StateMachine {
 				transform.position += Vector3.Lerp(transform.position,new Vector3(touch.deltaPosition.x *-0.5f,0,0),1f);
 			}
 		}
+		transform.position += Vector3.Lerp(transform.position,new Vector3(touch.deltaPosition.x *-0.5f,0,0),1f);
 	}
-	//transform.position += Vector3.Lerp(transform.position,new Vector3(touch.deltaPosition.x *-0.5f,0,0),2f);
+//	transform.position += Vector3.Lerp(transform.position,new Vector3(touch.deltaPosition.x *-0.5f,0,0),1f);
 	//works now because of reasons
 }
