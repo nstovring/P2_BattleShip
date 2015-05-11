@@ -6,8 +6,10 @@ public class StateMachine : MonoBehaviour {
 	public bool shipPlacing = true;
 	public bool miniGame;
 	public bool attacking;
-	//public static int teamTurn = 0;
+	public int teamTurn = 0;
 	public static int TeamTurn;
+	//Is only two for testing
+	public int readyPlayerMin = 2;
 	public static int State = 0; //Should be zero at start of a game
 	//State 0 is ShipPlacing State
 	//State 1 is Mini-Game State
@@ -42,8 +44,8 @@ public class StateMachine : MonoBehaviour {
 	void CheckForReady(int playerReady){
 		Debug.Log ("Some is Ready:" + readyPlayers);
 		readyPlayers+= playerReady;
-		if(readyPlayers >= 2){
-		nView.RPC("ChangeState", RPCMode.AllBuffered,2);
+		if(readyPlayers >= readyPlayerMin){
+		nView.RPC("ChangeState", RPCMode.AllBuffered,1);
 		}
 	}
 

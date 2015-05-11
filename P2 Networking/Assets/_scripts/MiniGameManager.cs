@@ -7,6 +7,7 @@ public class MiniGameManager : MonoBehaviour {
 	public static int[] TeamScore = new int[2];
 	protected NetworkView nView;
 	//StateMachine NetworkView
+	public int MiniGameScoreMin = 5;
 	private NetworkView sNView;
 	bool newTask = false;
 	CanvasController canvasController;
@@ -30,23 +31,28 @@ public class MiniGameManager : MonoBehaviour {
 			miniGameButtons[i].GetComponent<MiniGameButton>().name = buttonNames[i];
 		}
 	}
+
+	// Update is called once per frame
+	void Update () {
+		if(TeamScore[0] >=MiniGameScoreMax){
+			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
+			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
+			TeamScore[0] = 0;
+			noTasks1 = false;
+			noTasks2 = false;
+		}else if(TeamScore[1] >= MiniGameScoreMax){
+			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
+			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
+			TeamScore[1] = 0;
+			//noTasks1 = true;
+			//noTasks2 = true;
+		}
+		//At the start of a game assign a task for each player
+		InitializeMiniGames();
+	}
 	//At the beggining of each minigame round noTasks 1 & 2 are true
 	bool noTasks1 = true;
 	bool noTasks2 = true;
-	// Update is called once per frame
-	void Update () {
-		//At the start of a game assign a task for each player
-		if(TeamScore[0] >=10){
-			sNView.RPC("ChangeState",RPCMode.AllBuffered, 3);
-			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
-			TeamScore[0] = 0;
-		}else if(TeamScore[1] >= 10){
-			sNView.RPC("ChangeState",RPCMode.AllBuffered, 3);
-			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
-			TeamScore[1] = 0;
-		}
-		InitializeMiniGames();
-	}
 	void InitializeMiniGames(){
 		if(noTasks1 && Network.connections.Length >= 2){
 			nView.RPC("AssignNewTask",Network.connections[0]);
@@ -86,19 +92,19 @@ public class MiniGameManager : MonoBehaviour {
 	void InquireSetTaskDisplayerText(string task, NetworkMessageInfo info){
 		if(info.sender == Network.connections[0]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[1], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,0);
 		}
 		else if(info.sender == Network.connections[1]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[0], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,0);
 		}
 		else if(info.sender == Network.connections[2]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[3], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,2);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
 		}
 		else if(info.sender == Network.connections[3]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[2], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,2);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
 		}
 	}
 
@@ -126,17 +132,9 @@ public class MiniGameManager : MonoBehaviour {
 		newTask = true;
 	}
 
-	/*[RPC]
-	void UpdateScore(NetworkPlayer player){
-		if(player == Network.connections[0] ||player == Network.connections[1]){
-		TeamScore[0] += 1;
-		}
-		if(player == Network.connections[2] ||player == Network.connections[3]){
-			TeamScore[1] += 1;
-		}
-	}*/
 	[RPC]
 	void UpdateScore(int team){
 		TeamScore[team] += 1;
+		Debug.Log("Current score is: " + TeamScore[0] + "for team 1 and: " + TeamScore[1] + "for team 2");
 	}
 }
