@@ -43,10 +43,7 @@ public class StateMachine : MonoBehaviour {
 		Debug.Log ("Some is Ready:" + readyPlayers);
 		readyPlayers+= playerReady;
 		if(readyPlayers >= 2){
-			//Should be state 1 for real version
 		nView.RPC("ChangeState", RPCMode.AllBuffered,2);
-		nView.RPC("SetTeamTurn", RPCMode.AllBuffered,1);
-			//TeamTurn = 1;
 		}
 	}
 

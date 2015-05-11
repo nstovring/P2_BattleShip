@@ -4,12 +4,24 @@ using UnityEngine.UI;
 
 public class CanvasController : StateMachine {
 
+	public GameObject[] miniGameButtons = new GameObject[6];
 	public Button[] placementbuttons = new Button[7];
 	public Button[] attackingButtons = new Button[3];
 
 	// Use this for initialization
 	void Start () {
-	
+		ShuffleMiniGameButtonsPosition();
+	}
+	void ShuffleMiniGameButtonsPosition(){
+		Vector2[] positions = new Vector2[miniGameButtons.Length];
+		for(int i = 0; i < miniGameButtons.Length; i++){
+			positions[i] = miniGameButtons[i].GetComponent<RectTransform>().anchoredPosition;
+		}
+		for(int i = 0; i < miniGameButtons.Length; i++){
+			int rng = Random.Range(0, miniGameButtons.Length-1);
+			miniGameButtons[i].GetComponent<RectTransform>().anchoredPosition = positions[rng];
+			miniGameButtons[rng].GetComponent<RectTransform>().anchoredPosition = positions[i];
+		}
 	}
 
 	void EnablePlacementButtons(){
@@ -21,8 +33,6 @@ public class CanvasController : StateMachine {
 	void EnableAttackingButtons(){
 		for(int i = 0; i< attackingButtons.Length; i++){
 			attackingButtons[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0,300);
-			//attackingButtons[i].GetComponent<Image>().enabled = true;
-			//attackingButtons[i].enabled = true;
 		}
 	}
 
@@ -35,13 +45,10 @@ public class CanvasController : StateMachine {
 	void DisableAttackingButtons(){
 		for(int i = 0; i< attackingButtons.Length; i++){
 			attackingButtons[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0,900);
-			//attackingButtons[i].GetComponent<Image>().enabled = true;
-			//attackingButtons[i].enabled = true;
 		}
 	}
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log("State is" + State);
 		if(Network.isClient && State == 0){
 			EnablePlacementButtons();
 		}else{

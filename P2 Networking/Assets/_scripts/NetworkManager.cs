@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviour {
 	public static int playerCount = Network.connections.Length;
 	//int state
 	public static NetworkPlayer[] players = new NetworkPlayer[4];
-
+	public static int playerID;
 	private HostData[] hostList;
 
 	private void StartServer()
@@ -44,10 +44,18 @@ public class NetworkManager : MonoBehaviour {
 
 	}
 	void OnPlayerConnected(NetworkPlayer player) {
-		Debug.Log("Player " + playerCount++ + " connected from " + player.ipAddress + ":" + player.port);
-		//player.ToString();
-		players[int.Parse(player.ToString())] = player;
+		playerID = int.Parse(player.ToString());
+		Debug.Log("Player " + playerID + " connected from " + player.ipAddress + ":" + player.port);
+		Debug.Log("And amount of players connected is " + Network.connections.Length);
 
+		GetComponent<NetworkView>().RPC("setPlayers",RPCMode.AllBuffered, player, playerID);
+		//player.ToString();
+		//players[playerID-1] = player;
+
+	}
+	[RPC]
+	void setPlayers(NetworkPlayer player, int _playerID){
+		players[_playerID -1] = player;
 	}
 
 	void OnGUI()

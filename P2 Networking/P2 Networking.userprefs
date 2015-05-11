@@ -1,16 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\ServerAttacking.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\MiniGameManager.cs">
     <Files>
-      <File FileName="Assets\_scripts\shipScript.cs" Line="33" Column="1" />
-      <File FileName="Assets\_scripts\ShipPlacement.cs" Line="50" Column="30" />
-      <File FileName="Assets\_scripts\CameraScript.cs" Line="92" Column="107" />
-      <File FileName="Assets\_scripts\NetworkManager.cs" Line="8" Column="1" />
-      <File FileName="Assets\_scripts\createLayout.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\StateMachine.cs" Line="15" Column="23" />
-      <File FileName="Assets\_scripts\GridScript.cs" Line="42" Column="8" />
-      <File FileName="Assets\_scripts\ServerAttacking.cs" Line="55" Column="43" />
-      <File FileName="Assets\CanvasController.cs" Line="44" Column="5" />
+      <File FileName="Assets\_scripts\NetworkManager.cs" Line="53" Column="8" />
+      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="74" Column="53" />
+      <File FileName="Assets\_scripts\shipScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\ShipPlacement.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\CameraScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\CanvasController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\MiniGameButton.cs" Line="51" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
