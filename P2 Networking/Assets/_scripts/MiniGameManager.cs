@@ -21,6 +21,7 @@ public class MiniGameManager : MonoBehaviour {
 	public GameObject taskDisplayer;
 	public StateMachine stateMachine;
 	public NetworkManager networkManager;
+	Text[] scoreTexts = new Text[1];
 
 	//used for storing random numbers that are used when assigning button names.
 	List<int> randomList = new List<int>();
@@ -36,6 +37,7 @@ public class MiniGameManager : MonoBehaviour {
 		//Get the gameobjects NetworkView
 		nView = GetComponent<NetworkView>();
 		sNView = stateMachine.GetComponent<NetworkView>();
+		scoreTexts = canvasController.scoreText;
 		//Assign names to each of the buttons 
 
 		//For loop for assignin button names
@@ -166,5 +168,6 @@ public class MiniGameManager : MonoBehaviour {
 	void UpdateScore(int team){
 		TeamScore[team] += 1;
 		Debug.Log("Current score is: " + TeamScore[0] + "for team 1 and: " + TeamScore[1] + "for team 2");
+		scoreTexts [team].GetComponent<Text> ().text = "Your teams score is: " + TeamScore;
 	}
 }
