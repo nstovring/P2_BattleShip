@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\MiniGameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\CameraScript.cs">
     <Files>
-      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="38" Column="44" />
+      <File FileName="Assets\_scripts\StateMachine.cs" Line="13" Column="39" />
+      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\NetworkManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\CameraScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\CanvasController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\MiniGameButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\StateMachine.cs" Line="1" Column="1" />
+      <File FileName="Assets\_scripts\CameraScript.cs" Line="81" Column="3" />
+      <File FileName="Assets\CanvasController.cs" Line="46" Column="89" />
+      <File FileName="Assets\_scripts\MiniGameButton.cs" Line="18" Column="1" />
       <File FileName="Assets\_scripts\ServerAttacking.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
