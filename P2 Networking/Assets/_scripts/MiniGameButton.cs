@@ -37,7 +37,7 @@ public class MiniGameButton : MiniGameManager {
 						nView.RPC ("RPCCompletedTask", RPCMode.Server, int.Parse (Network.player.ToString ()));
 				} 
 		else if (!isActive && Network.isClient) {
-			mNView.RPC("updateScore",RPCMode.Server,int.Parse(Network.player.ToString()),-1);
+			mNView.RPC("UpdateScore",RPCMode.Server,int.Parse(Network.player.ToString()),-1);
 				}
 	}
 	[RPC]
