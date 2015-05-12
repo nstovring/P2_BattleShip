@@ -110,18 +110,28 @@ public class shipScript : MonoBehaviour {
 			#endif
 		//}
 		setHealth(health-=1);
-			hitTime = 0;
+			//hitTime = 0;
 		}
 	}
 
+	/*void OnTriggerWithin(Collider[] other){
+		//for(int i = 0 ; i< other.Length)
+		foreach(Collider col in other){
+			if(col.transform.tag =="TargetMarker"){
+				col.transform.GetComponent<TargetMarker>().ChangeColor();
+				Hit ();
+			}
+		}
+	}*/
+//	bool[] hitTimes = new bool[health];
 
 	void OnTriggerEnter(Collider other){
 		if(other.transform.tag == "GridSquare" && Network.isClient){
 			other.GetComponent<GridScript>().setOccupied(true);
 		}
-		if(other.transform.tag == "TargetMarker"){
+		/*if(other.transform.tag == "TargetMarker"){
 			other.transform.GetComponent<TargetMarker>().ChangeColor();
 			Hit ();
-		}
+		}*/
 	}
 }

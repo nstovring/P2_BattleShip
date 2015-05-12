@@ -3,9 +3,14 @@ using System.Collections;
 
 public class TargetMarker : MonoBehaviour {
 
+	Transform hitShip;
 	public bool hit = false;
 	public GameObject explosion;
 	void Update(){
+		if(hit){
+			hitShip.GetComponent<shipScript>().Hit();
+			hit =false;
+		}
 
 	}
 
@@ -21,9 +26,20 @@ public class TargetMarker : MonoBehaviour {
 		//GetComponent<BoxCollider>().enabled = false;
 	}
 
+	bool hitDone = false;
 
 	public void ChangeColor(){
 		GetComponent<NetworkView>().RPC("NetWorkChangeColor",RPCMode.AllBuffered);
 		Network.Instantiate(explosion,transform.position,Quaternion.identity,0);
 	}
+
+	void OnTriggerStay(Collider col){
+		if(col.transform.tag == "Ship" && !hit && !hitDone){
+			hitShip = col.transform;
+			ChangeColor();
+			hitDone = true;
+			hit = true;
+		}
+	}
+
 }

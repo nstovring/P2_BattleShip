@@ -9,7 +9,7 @@ public class StateMachine : MonoBehaviour {
 	public int teamTurn = 0;
 	public static int TeamTurn;
 	//Is only two for testing
-	public int readyPlayerMin = 2;
+	public int readyPlayerMin = 4;
 	public static int State = 0; //Should be zero at start of a game
 	//State 0 is ShipPlacing State
 	//State 1 is Mini-Game State

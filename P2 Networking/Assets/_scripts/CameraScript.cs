@@ -34,7 +34,8 @@ public class CameraScript : StateMachine {
 			transform.rotation = PlayerAngles[playerNum].rotation;
 			Camera camera= GetComponent<Camera>();
 			camera.orthographic = true;
-			camera.orthographicSize = 16.8f;
+			//camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 20.12f, 0.1f);
+			camera.orthographicSize = 12.12f;
 		}
 	}
 
@@ -54,7 +55,7 @@ public class CameraScript : StateMachine {
 		#elif UNITY_ANDROID
 			if(Network.isClient){
 
-				AndroidMovement();
+				//AndroidMovement();
 		}
 		#endif
 	}
@@ -85,7 +86,6 @@ public class CameraScript : StateMachine {
 			touch = Input.touches[0];
 			if (touch.phase == TouchPhase.Moved)
 			{
-				//transform.Translate(new Vector3(touch.deltaPosition.x *-0.5f,0,0));
 				transform.position += Vector3.Lerp(transform.position,new Vector3(touch.deltaPosition.x *-0.5f,0,0),1f);
 			}
 		}
