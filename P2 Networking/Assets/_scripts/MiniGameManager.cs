@@ -21,6 +21,7 @@ public class MiniGameManager : MonoBehaviour {
 	public GameObject taskDisplayer;
 	public StateMachine stateMachine;
 	public NetworkManager networkManager;
+	Text[] scoreTexts = new Text[1];
 
 	//used for storing random numbers that are used when assigning button names.
 	List<int> randomList = new List<int>();
@@ -36,6 +37,7 @@ public class MiniGameManager : MonoBehaviour {
 		//Get the gameobjects NetworkView
 		nView = GetComponent<NetworkView>();
 		sNView = stateMachine.GetComponent<NetworkView>();
+		scoreTexts = canvasController.scoreText;
 		//Assign names to each of the buttons 
 
 		//For loop for assignin button names
@@ -91,11 +93,11 @@ public class MiniGameManager : MonoBehaviour {
 		}
 	}
 
-	//Sets the text in the taskDisplayer
+	//Sets the text in the taskDisplayer aka. this is where the damn instructions are displayed!!!!!!!!!!
 	[RPC]
 	public void SetTaskDisplayerText(string task){
 		Debug.Log("SetTaskDisplayer " + task);
-		taskDisplayer.GetComponent<Text>().text = "Press the "+ task + " button";
+		taskDisplayer.GetComponent<Text>().text = task;
 	}
 	//Assign tasks to a specific player dependant on which one called the method
 	[RPC]
@@ -118,19 +120,19 @@ public class MiniGameManager : MonoBehaviour {
 	void InquireSetTaskDisplayerText(string task, NetworkMessageInfo info){
 		if(info.sender == Network.connections[0]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[1], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,0);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,0,1);
 		}
 		else if(info.sender == Network.connections[1]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[0], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,0);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,0,1);
 		}
 		else if(info.sender == Network.connections[2]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[3], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,1,1);
 		}
 		else if(info.sender == Network.connections[3]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[2], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered,1,1);
 		}
 	}
 
@@ -163,8 +165,9 @@ public class MiniGameManager : MonoBehaviour {
 	}
 
 	[RPC]
-	void UpdateScore(int team){
-		TeamScore[team] += 1;
+	void UpdateScore(int team, int val){
+		TeamScore[team] += val;
 		Debug.Log("Current score is: " + TeamScore[0] + "for team 1 and: " + TeamScore[1] + "for team 2");
+		scoreTexts [team].GetComponent<Text> ().text = "Your teams score is: " + TeamScore;
 	}
 }
