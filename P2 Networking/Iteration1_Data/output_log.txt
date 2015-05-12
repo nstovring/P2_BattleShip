@@ -17,7 +17,7 @@ Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networki
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.180 seconds
+- Completed reload, in  0.170 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,52 +25,53 @@ desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.dll (this message is harmless)
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1b7c -> priority: 1 
-Received pong from 25.60.146.136:25000
- 
-(Filename:  Line: 845)
-
-Received pong from 172.30.212.246:25000
- 
-(Filename:  Line: 845)
-
-Server Joined
+  Thread -> id: 1b98 -> priority: 1 
+Server Initializied
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player ID is 1
+Player 1 connected from 25.60.146.136:56655
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-View ID AllocatedID: 0 not found during lookup. Strange behaviour may occur
+And amount of players connected is 1
  
-(Filename:  Line: 1690)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Received state update for view id' AllocatedID: 0' but the NetworkView doesn't exist
+AllocatedID: 50 spawned
  
-(Filename:  Line: 2483)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-View ID AllocatedID: 0 not found during lookup. Strange behaviour may occur
+AllocatedID: 51 spawned
  
-(Filename:  Line: 1690)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Received state update for view id' AllocatedID: 0' but the NetworkView doesn't exist
+Target Placed
  
-(Filename:  Line: 2483)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-View ID AllocatedID: 0 not found during lookup. Strange behaviour may occur
+Target Placed
  
-(Filename:  Line: 1690)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Received state update for view id' AllocatedID: 0' but the NetworkView doesn't exist
+Target Placed
  
-(Filename:  Line: 2483)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-View ID AllocatedID: 0 not found during lookup. Strange behaviour may occur
+Target Placed
  
-(Filename:  Line: 1690)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Received state update for view id' AllocatedID: 0' but the NetworkView doesn't exist
+WARNING: Shader Unsupported: 'HeatDistort' - All passes removed
+Target Placed
  
-(Filename:  Line: 2483)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Ship Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
