@@ -55,11 +55,16 @@ public class MiniGameManager : MonoBehaviour {
 			}
 		}
 		//Display to the clients which team they are on
+		if(Network.isClient || Network.isServer){
 		SetTeamText();
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if(Network.isClient || Network.isServer){
+			SetTeamText();
+		}
 		if(TeamScore[0] >=MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
@@ -187,12 +192,15 @@ public class MiniGameManager : MonoBehaviour {
 		TeamScore[1] = 0;
 	}
 	void SetTeamText(){
-		if(Network.player == Network.connections[0] || Network.player== Network.connections[1] ){
-			teamText.GetComponentInChildren<Text>().text = "Team 1";
+		if(Network.isClient){
+			if(Network.player == Network.connections[0] || Network.player== Network.connections[1] ){
+				teamText.GetComponentInChildren<Text>().text = "Team 1";
+			}
+			else if(Network.player == Network.connections[2] || Network.player == Network.connections[3] ){
+				teamText.GetComponentInChildren<Text>().text = "Team 2";
+			}
 		}
-		else if(Network.player == Network.connections[2] || Network.player == Network.connections[3] ){
-			teamText.GetComponentInChildren<Text>().text = "Team 2";
-		}else{
+		else{
 			teamText.GetComponentInChildren<Text>().text = "Board View";
 		}
 	}
