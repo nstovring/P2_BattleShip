@@ -15,8 +15,6 @@ public class MiniGameButton : MiniGameManager {
 	int thisPlayer;
 	// Use this for initialization
 	void Start () {
-		//nView = new NetworkView();
-		//nView.viewID = 366;
 		nView = GetComponent<NetworkView>();
 		miniGameManager = transform.parent.GetComponent<MiniGameManager>();
 		mNView = transform.parent.GetComponent<NetworkView>();
@@ -35,9 +33,12 @@ public class MiniGameButton : MiniGameManager {
 	}
 	//If the button is active and the clicker is a client call the RPCCompleted Task method on the server
 	public void CompletedTask(){
-		if(isActive && Network.isClient){
-			nView.RPC("RPCCompletedTask", RPCMode.Server, int.Parse(Network.player.ToString()));
-		}
+		if (isActive && Network.isClient) {
+						nView.RPC ("RPCCompletedTask", RPCMode.Server, int.Parse (Network.player.ToString ()));
+				} 
+		else if (!isActive && Network.isClient) {
+			mNView.RPC("updateScore",RPCMode.Server,int.Parse(Network.player.ToString()),-1);
+				}
 	}
 	[RPC]
 	void SetActive(){
