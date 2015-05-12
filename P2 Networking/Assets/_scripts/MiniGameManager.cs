@@ -38,14 +38,19 @@ public class MiniGameManager : MonoBehaviour {
 	void Update () {
 		if(TeamScore[0] >=MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
-			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
+			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
+			//reset the turns for both teams
 			TeamScore[0] = 0;
+			TeamScore[1] = 0;
 			noTasks1 = false;
 			noTasks2 = false;
 		}else if(TeamScore[1] >= MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
-			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
+			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
+			//reset the turns for both teams
+			TeamScore[0] = 0;
 			TeamScore[1] = 0;
+
 			//noTasks1 = true;
 			//noTasks2 = true;
 		}
