@@ -38,6 +38,8 @@ public class MiniGameButton : MiniGameManager {
 		if(isActive && Network.isClient){
 			nView.RPC("RPCCompletedTask", RPCMode.Server, int.Parse(Network.player.ToString()));
 		}
+		//if button not active: teamScore -1 
+
 	}
 	[RPC]
 	void SetActive(){

@@ -36,13 +36,17 @@ public class MiniGameManager : MonoBehaviour {
 	void Update () {
 		if(TeamScore[0] >=MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
-			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
+			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
+			//reset both teams minigame score
 			TeamScore[0] = 0;
+			TeamScore[1] = 0;
 			noTasks1 = false;
 			noTasks2 = false;
 		}else if(TeamScore[1] >= MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
-			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
+			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
+			//reset both teams minigame score
+			TeamScore[0] = 0;
 			TeamScore[1] = 0;
 			//noTasks1 = true;
 			//noTasks2 = true;
@@ -90,18 +94,24 @@ public class MiniGameManager : MonoBehaviour {
 	//The InquireSetTaskDisplayerText method changes the task displayed for the teammate of the player who Inquired 
 	[RPC]
 	void InquireSetTaskDisplayerText(string task, NetworkMessageInfo info){
+		//player 1 sends text to player 2 
 		if(info.sender == Network.connections[0]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[1], task);
 			nView.RPC("UpdateScore",RPCMode.AllBuffered,0);
 		}
+
+		//player 2 sends text to player 1
 		else if(info.sender == Network.connections[1]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[0], task);
 			nView.RPC("UpdateScore",RPCMode.AllBuffered,0);
 		}
+
+		//player 3 sends text to player 4
 		else if(info.sender == Network.connections[2]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[3], task);
 			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
 		}
+		//player 4 sends text to player 3
 		else if(info.sender == Network.connections[3]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[2], task);
 			nView.RPC("UpdateScore",RPCMode.AllBuffered,1);
