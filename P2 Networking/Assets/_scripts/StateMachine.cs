@@ -64,7 +64,7 @@ public class StateMachine : MonoBehaviour {
 	}
 
 	//Reload scene method for debugging
-	private void ReloadScene(){
+	public void ReloadScene(){
 		if(Network.isClient){
 			Network.Disconnect();
 			MasterServer.UnregisterHost();
