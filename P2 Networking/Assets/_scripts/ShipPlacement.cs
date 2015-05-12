@@ -87,8 +87,6 @@ public class ShipPlacement : StateMachine {
 		if (Physics.Raycast(ray,out hit, 100,gridLayer)){
 			if(hit.transform.tag == "GridSquare" && placingShip){
 				//Gather the code from the currently targeted grid and the currently selected ship
-//				shipScript ShipScript = ships[selectedShip].GetComponent<shipScript>();
-				//GridScript gridScript = hit.transform.GetComponent<GridScript>();
 				DisplayGhostShip(hit);
 			}
 		}
@@ -152,7 +150,6 @@ public class ShipPlacement : StateMachine {
 		ghostShips[selectedShip].transform.position = new Vector3(50,0,0);
 		//Reduce amount of ships Avaliable
 		substractShip(1,selectedShip);
-		//availableShips[selectedShip] -= 1;
 		//Disable Shipbutton if there are no more ships avaliable
 		buttons[selectedShip].interactable = availableShips[selectedShip] == 0 ? false : true;
 		//Player is no longer placing a ship

@@ -42,18 +42,26 @@ public class shipScript : MonoBehaviour {
 	public int GetRotation(){
 		return currentRotation;
 	}
+	MeshRenderer[] renderers;
+		SpriteRenderer[] sRenderes; 
 	void OnNetworkInstantiate(NetworkMessageInfo info) {
 		nView = GetComponent<NetworkView>();
 		Debug.Log(nView.viewID + " spawned");
 		creator = info.sender;
-		MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-		
-		if(Network.isServer && health > 0){
+		renderers = GetComponentsInChildren<MeshRenderer>();
+		sRenderes = GetComponentsInChildren<SpriteRenderer>();
+		if(Network.isServer){
 			foreach(MeshRenderer renderer in renderers){
+				renderer.enabled = false;
+			}
+			foreach(SpriteRenderer renderer in sRenderes){
 				renderer.enabled = false;
 			}
 		}else{
 			foreach(MeshRenderer renderer in renderers){
+				renderer.enabled = true;
+			}
+			foreach(SpriteRenderer renderer in sRenderes){
 				renderer.enabled = true;
 			}
 		}
@@ -62,18 +70,24 @@ public class shipScript : MonoBehaviour {
 	[RPC]
 	//Create a destroyed version of itself on the server
 	public void Destroyed(){
-
-		Network.Instantiate(destroyedShips[shipType],transform.position,transform.rotation,0);
-		Network.RemoveRPCs(nView.viewID);
-		Network.Destroy(gameObject);
+		foreach(MeshRenderer renderer in renderers){
+			renderer.enabled = true;
+		}
+		foreach(SpriteRenderer renderer in sRenderes){
+			renderer.enabled = true;
+		}
+		//Network.Instantiate(destroyedShips[shipType],transform.position,transform.rotation,0);
+		//Network.RemoveRPCs(nView.viewID);
+		//Network.Destroy(gameObject);
 
 	}
-	
+	bool dead = false;
 	// Update is called once per frame
 	void Update () {
-		if(health <= 0 && transform.tag == "Ship"){
+		if(health <= 0 && transform.tag == "Ship" && !dead){
 			Debug.Log("Ship Destroyed");
 			nView.RPC("Destroyed",RPCMode.AllBuffered);
+			dead = true;
 			//Destroyed();
 		}
 
@@ -103,35 +117,24 @@ public class shipScript : MonoBehaviour {
 		}
 	}
 	public void Hit(){
-		if(hitTime >= 0.5f){
-		//if(creator == Network.player){
-			#if UNITY_ANDROID
-			Handheld.Vibrate();
-			#endif
-		//}
-		setHealth(health-=1);
-			//hitTime = 0;
-		}
+		health -= 1;
 	}
+	public int targetMarkers = 0;
+	void OnTriggerStay(Collider others){
 
-	/*void OnTriggerWithin(Collider[] other){
-		//for(int i = 0 ; i< other.Length)
-		foreach(Collider col in other){
-			if(col.transform.tag =="TargetMarker"){
-				col.transform.GetComponent<TargetMarker>().ChangeColor();
-				Hit ();
+		if(others.transform.tag == "TargetMarker"){
+			if(others.transform.GetComponent<TargetMarker>().hit == false){
+			targetMarkers++;
+			Hit();
+			others.transform.GetComponent<TargetMarker>().ChangeColor();
+			others.transform.GetComponent<TargetMarker>().hit = true;
 			}
 		}
-	}*/
-//	bool[] hitTimes = new bool[health];
+	}
 
 	void OnTriggerEnter(Collider other){
 		if(other.transform.tag == "GridSquare" && Network.isClient){
 			other.GetComponent<GridScript>().setOccupied(true);
 		}
-		/*if(other.transform.tag == "TargetMarker"){
-			other.transform.GetComponent<TargetMarker>().ChangeColor();
-			Hit ();
-		}*/
 	}
 }
