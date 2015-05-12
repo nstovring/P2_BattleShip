@@ -16,7 +16,7 @@ public class MiniGameManager : MonoBehaviour {
 	public GameObject taskDisplayer;
 	public StateMachine stateMachine;
 	public NetworkManager networkManager;
-	Text[] scoreTexts = new Text[2];
+	Text[] scoreTexts = new Text[1];
 
 	// Use this for initialization
 	void Start () {
@@ -65,7 +65,7 @@ public class MiniGameManager : MonoBehaviour {
 			nView.RPC("AssignNewTask",Network.connections[0]);
 			nView.RPC("AssignNewTask",Network.connections[1]);
 			noTasks1 = false;
-		}else if(noTasks1 && Network.connections.Length >= 4){
+		}else if(noTasks2 && Network.connections.Length >= 4){
 			nView.RPC("AssignNewTask",Network.connections[2]);
 			nView.RPC("AssignNewTask",Network.connections[3]);
 			noTasks2 = false;
@@ -143,7 +143,7 @@ public class MiniGameManager : MonoBehaviour {
 	void UpdateScore(int team, int val){
 		TeamScore[team] += val;
 		Debug.Log("Current score is: " + TeamScore[0] + "for team 1 and: " + TeamScore[1] + "for team 2");
-		scoreTexts [team].GetComponent<Text> ().text = "Your teams score is: " + TeamScore [team];
+		scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore [team];
 
 	}
 }
