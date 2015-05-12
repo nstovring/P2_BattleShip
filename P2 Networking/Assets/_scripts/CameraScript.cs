@@ -35,7 +35,7 @@ public class CameraScript : StateMachine {
 			Camera camera= GetComponent<Camera>();
 			camera.orthographic = true;
 			//camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 20.12f, 0.1f);
-			camera.orthographicSize = 12.12f;
+			camera.orthographicSize = 12.69f;
 		}
 	}
 

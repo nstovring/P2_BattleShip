@@ -1,13 +1,1 @@
-<<<<<<< HEAD
-Build from NIKI-SURFACE at 5/12/2015 4:46:04 PM
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-Build from JEPPES-LAPTOP at 5/12/2015 2:27:57 PM
-=======
-Build from X-PORTABLE at 5/12/2015 4:28:32 PM
->>>>>>> 35260e909b78408f384413c1f19bf5f94df9865b
-=======
-Build from ESBERNSURFACE at 5/12/2015 4:26:50 PM
->>>>>>> origin/Development-NEW
->>>>>>> origin/Development-NEW
+Build from NIKI-SURFACE at 5/12/2015 5:21:49 PM
