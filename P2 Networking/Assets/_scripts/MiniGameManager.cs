@@ -34,13 +34,13 @@ public class MiniGameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(TeamScore[0] >=MiniGameScoreMax){
+		if(TeamScore[0] >=MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
 			TeamScore[0] = 0;
 			noTasks1 = false;
 			noTasks2 = false;
-		}else if(TeamScore[1] >= MiniGameScoreMax){
+		}else if(TeamScore[1] >= MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
 			TeamScore[1] = 0;
