@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class CanvasController : StateMachine {
 
 	public GameObject miniGameButtonParent;
+	public GameObject placementButtonParent;
+
 	public GameObject[] miniGameButtons = new GameObject[6];
 	public Button[] placementbuttons = new Button[7];
 	public Button[] attackingButtons = new Button[3];
@@ -41,10 +43,12 @@ public class CanvasController : StateMachine {
 	}
 
 	void EnablePlacementButtons(){
-			for(int i = 0; i< placementbuttons.Length; i++){
+		placementButtonParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+
+		/*	for(int i = 0; i< placementbuttons.Length; i++){
 			placementbuttons[i].GetComponent<Image>().enabled = true;
 			placementbuttons[i].enabled = true;
-			}
+			}*/
 	}
 	void EnableAttackingButtons(){
 		for(int i = 0; i< attackingButtons.Length; i++){
@@ -53,10 +57,12 @@ public class CanvasController : StateMachine {
 	}
 
 	void DisablePlacementButtons(){
-		for(int i = 0; i< placementbuttons.Length; i++){
+		placementButtonParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,800);
+
+		/*for(int i = 0; i< placementbuttons.Length; i++){
 			placementbuttons[i].GetComponent<Image>().enabled = false;
 			placementbuttons[i].enabled = false;
-		}
+		}*/
 	}
 	void DisableAttackingButtons(){
 		for(int i = 0; i< attackingButtons.Length; i++){

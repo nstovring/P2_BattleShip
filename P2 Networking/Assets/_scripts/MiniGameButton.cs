@@ -15,8 +15,6 @@ public class MiniGameButton : MiniGameManager {
 	int thisPlayer;
 	// Use this for initialization
 	void Start () {
-		//nView = new NetworkView();
-		//nView.viewID = 366;
 		nView = GetComponent<NetworkView>();
 		miniGameManager = transform.parent.GetComponent<MiniGameManager>();
 		mNView = transform.parent.GetComponent<NetworkView>();

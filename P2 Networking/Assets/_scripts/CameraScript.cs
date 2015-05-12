@@ -34,7 +34,8 @@ public class CameraScript : StateMachine {
 			transform.rotation = PlayerAngles[playerNum].rotation;
 			Camera camera= GetComponent<Camera>();
 			camera.orthographic = true;
-			camera.orthographicSize = 16.8f;
+			camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 12.56f, 0.1f);
+
 		}
 	}
 
