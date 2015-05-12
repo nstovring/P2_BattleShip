@@ -26,7 +26,7 @@ public class TargetMarker : MonoBehaviour {
 		hit = true;
 	}
 
-	bool hitDone = false;
+	//bool hitDone = false;
 
 	public void ChangeColor(){
 		GetComponent<NetworkView>().RPC("NetWorkChangeColor",RPCMode.AllBuffered);

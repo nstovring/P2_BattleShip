@@ -6,19 +6,19 @@ public class MiniGameButton : MiniGameManager {
 
 
 	public bool isActive = false;
-	public string name;
-	MiniGameManager miniGameManager;
+	public string buttonName;
+	//MiniGameManager miniGameManager;
 	Text thisName;
 	//MiniGameManager NetworkView
 	NetworkView mNView;
 
-	int thisPlayer;
+	//int thisPlayer;
 	// Use this for initialization
 	void Start () {
 		nView = GetComponent<NetworkView>();
-		miniGameManager = transform.parent.GetComponent<MiniGameManager>();
+		//miniGameManager = transform.parent.GetComponent<MiniGameManager>();
 		mNView = transform.parent.GetComponent<NetworkView>();
-		thisPlayer = int.Parse(Network.player.ToString());
+		//thisPlayer = int.Parse(Network.player.ToString());
 	}
 
 	bool setTask = false;
@@ -28,8 +28,8 @@ public class MiniGameButton : MiniGameManager {
 			setTask = true;
 		}
 
-		GetComponentInChildren<Text>().text = name;
-		
+		GetComponentInChildren<Text>().text = buttonName;
+		name = buttonName;
 	}
 	//If the button is active and the clicker is a client call the RPCCompleted Task method on the server
 	public void CompletedTask(){
@@ -37,9 +37,10 @@ public class MiniGameButton : MiniGameManager {
 						nView.RPC ("RPCCompletedTask", RPCMode.Server, int.Parse (Network.player.ToString ()));
 				} 
 		else if (!isActive && Network.isClient) {
-			mNView.RPC("updateScore",RPCMode.Server,int.Parse(Network.player.ToString()),-1);
+					mNView.RPC("RequestScoreUpdate",RPCMode.Server,-1);
 				}
 	}
+	//
 	[RPC]
 	void SetActive(){
 		isActive = true;

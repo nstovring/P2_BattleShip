@@ -10,7 +10,7 @@ public class ServerAttacking : StateMachine {
 	public GameObject[] ghostTargetMarkers = new GameObject[2];
 	private int gridLayer = 1<< 8;
 	int currentTargetMarker = 0;
-	bool nextTurn = false;
+	//bool nextTurn = false;
 	public float nextTurnTimer = 3f;
 	//int targetMarkers = 2;
 	void Start(){
@@ -47,7 +47,7 @@ public class ServerAttacking : StateMachine {
 			nView.RPC("DeployTargetMarker",RPCMode.AllBuffered, ghostTargetMarker.transform.position);
 		}
 		currentTargetMarker = 0;
-		nextTurn = true;
+		//nextTurn = true;
 		if(stateMachine.GetTeamTurn() == 1 && turns < 2){
 		stateMachine.SetTeamTurn(2);
 			turns++;

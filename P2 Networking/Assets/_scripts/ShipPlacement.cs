@@ -10,15 +10,14 @@ public class ShipPlacement : StateMachine {
 	bool readySet = false;
 	//Amount of ships available
 	public int[] availableShips = {1,2,1,1};
-	shipScript selectedShipScript;
+//	shipScript selectedShipScript;
 	private int gridLayer = 1<< 8;
-	//private int gridLayer = 1<< 8;
 	//interesting stuff gotta investigate later
 	//gridLayer = ~gridLayer;
 	GridScript gridScript;
 	RaycastHit hit;
 	private int selectedShip;
-
+	bool allShipsPlaced = false;
 	private bool placingShip = false;
 	[RPC]
 	public bool GetReady(){
@@ -45,6 +44,15 @@ public class ShipPlacement : StateMachine {
 	
 	// Update is called once per frame
 	void Update () {
+		for(int i= 0; i < availableShips.Length; i++){
+			if(availableShips[i] > 0){
+				break;
+			}else{
+				allShipsPlaced = true;
+			}
+		}
+		//Disable or enable shiplacement button depending on allshipsPlaced bool
+		buttons[6].interactable = allShipsPlaced ? false: true;
 
 		if(Network.isServer){
 			for(int i = 0; i< buttons.Length; i++){
@@ -100,7 +108,7 @@ public class ShipPlacement : StateMachine {
 				//Gather the code from the currently targeted grid and the currently selected ship
 				shipScript ShipScript = ships[selectedShip].GetComponent<shipScript>();
 				GridScript gridScript = pcHit.transform.GetComponent<GridScript>();
-				selectedShipScript = ShipScript;
+	//			selectedShipScript = ShipScript;
 				DisplayGhostShip(pcHit);
 				//If left mousebutton pressed and the grid is unoccupied
 				if(Input.GetMouseButtonDown(0) && !gridScript.getOccupied(ShipScript)){
@@ -137,13 +145,18 @@ public class ShipPlacement : StateMachine {
 	}
 
 	public void RotateShipLeft(){
-		RotateLeft = true;
+		shipScript ShipScript = ghostShips[selectedShip].GetComponent<shipScript>();
+		ShipScript.RotateShipRight();
+		//RotateLeft = true;
 	}
 	public void RotateShipRight(){
-		RotateRight = true;
+		shipScript ShipScript = ghostShips[selectedShip].GetComponent<shipScript>();
+		ShipScript.RotateShipLeft();
+		//RotateRight = true;
 	}
 
 	public void DeployShip(){
+		if(placingShip){
 		//Instantiate a ship at the position of the ghost ship
 		Network.Instantiate(ships[selectedShip],ghostShips[selectedShip].transform.position,ghostShips[selectedShip].transform.rotation,0);
 		//Move the ghost ship away
@@ -154,5 +167,7 @@ public class ShipPlacement : StateMachine {
 		buttons[selectedShip].interactable = availableShips[selectedShip] == 0 ? false : true;
 		//Player is no longer placing a ship
 		setPlacingShip(false);
+		//Reset the selectedShip Variable
+		}
 	}
 }

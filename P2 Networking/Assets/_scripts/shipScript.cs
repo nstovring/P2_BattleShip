@@ -14,7 +14,6 @@ public class shipScript : MonoBehaviour {
 	public GameObject[] destroyedShips = new GameObject[4];
 
 	public NetworkView nView;
-	NetworkPlayer creator;
 	void Start() {
 
 	}
@@ -47,7 +46,6 @@ public class shipScript : MonoBehaviour {
 	void OnNetworkInstantiate(NetworkMessageInfo info) {
 		nView = GetComponent<NetworkView>();
 		Debug.Log(nView.viewID + " spawned");
-		creator = info.sender;
 		renderers = GetComponentsInChildren<MeshRenderer>();
 		sRenderes = GetComponentsInChildren<SpriteRenderer>();
 		if(Network.isServer){

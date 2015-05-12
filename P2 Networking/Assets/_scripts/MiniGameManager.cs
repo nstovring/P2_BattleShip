@@ -6,18 +6,19 @@ using System.Collections.Generic;
 
 public class MiniGameManager : MonoBehaviour {
 
-	public static int[] TeamScore = new int[2];
+	public static int[] TeamScore = {-2,-2};
 	protected NetworkView nView;
 	//StateMachine NetworkView
-	public int MiniGameScoreMin = 5;
+	public int MiniGameScoreMin = 20;
 	private NetworkView sNView;
-	bool newTask = false;
+	//bool newTask = false;
 	CanvasController canvasController;
 
 	string[] buttonNames = {"Steering-rod", "Drain holes", "Air-flask", "Immersion-chamber", "Steering Engine", "Bevel-gear box", "Stop-valves", "Engine bed plate", "Primer case", "Propellers", "Guide stud", "Strengthening band"};
-	string[] buttonCommands = {"Adjust the ", "Flush out the ", "Refill the ", "Unimmerse the ", "Reignite the ", "Fetch the ", "Turn the ", "Clear out the", "Re-arrange the ", "Engage the ", "Pull up the ", "Fix the"};
+	string[] buttonCommands = {"Adjust the ", "Flush out the ", "Refill the ", "Unimmerse the ", "Reignite the ", "Fetch the ", "Turn the ", "Clear out the ", "Re-arrange the ", "Engage the ", "Pull up the ", "Fix the "};
 
 	GameObject[] miniGameButtons = new GameObject[6];
+	public GameObject teamText;
 	public GameObject taskDisplayer;
 	public StateMachine stateMachine;
 	public NetworkManager networkManager;
@@ -25,8 +26,6 @@ public class MiniGameManager : MonoBehaviour {
 
 	//used for storing random numbers that are used when assigning button names.
 	List<int> randomList = new List<int>();
-
-
 
 	// Use this for initialization
 	void Start () {
@@ -38,58 +37,59 @@ public class MiniGameManager : MonoBehaviour {
 		nView = GetComponent<NetworkView>();
 		sNView = stateMachine.GetComponent<NetworkView>();
 		scoreTexts = canvasController.scoreText;
+		teamText = canvasController.teamText;
 		//Assign names to each of the buttons 
 
-		//For loop for assignin button names
+		//For loop for assigning button names
 		for(int i = 0; i < miniGameButtons.Length; i++){
-
 			//find a random number, this is used to fetch a position from the buttonNames array
 			int randomButtonName = Random.Range(0,buttonNames.Length);
 			//as long as this random number is found in randomList, generate a new random number and repeat process
 			while (randomList.Contains(randomButtonName)){
 				randomButtonName = Random.Range(0,buttonNames.Length);
 			}
-	
 			//if the random number is not found in randomList, add it and use it to fetch a name from the buttonNames array
 			if (!randomList.Contains(randomButtonName)){
 				randomList.Add(randomButtonName);
-				miniGameButtons[i].GetComponent<MiniGameButton>().name = buttonNames[randomButtonName];
+				miniGameButtons[i].GetComponent<MiniGameButton>().buttonName = buttonNames[randomButtonName];
 			}
-
-	
 		}
+		//Display to the clients which team they are on
+		SetTeamText();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if(TeamScore[0] >=MiniGameScoreMin){
+		if(TeamScore[0] >=MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
-			TeamScore[0] = 0;
-			noTasks1 = false;
-			noTasks2 = false;
-		}else if(TeamScore[1] >= MiniGameScoreMin){
+			nView.RPC("ResetScore", RPCMode.AllBuffered);
+			//TeamScore[0] = 0;
+			//TeamScore[1] = 0;
+			noTasks = false;
+		}else if(TeamScore[1] >= MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
-			TeamScore[1] = 0;
-			//noTasks1 = true;
+			nView.RPC("ResetScore", RPCMode.AllBuffered);
+			//TeamScore[0] = 0;
+			//TeamScore[1] = 0;
+			noTasks = false;
 			//noTasks2 = true;
 		}
 		//At the start of a game assign a task for each player
 		InitializeMiniGames();
+		//Set the teamtext dialogbox
 	}
+	
 	//At the beggining of each minigame round noTasks 1 & 2 are true
-	bool noTasks1 = true;
-	bool noTasks2 = true;
+	bool noTasks = true;
 	void InitializeMiniGames(){
-		if(noTasks1 && Network.connections.Length >= 2){
+		if(noTasks && Network.connections.Length >= 2){
 			nView.RPC("AssignNewTask",Network.connections[0]);
 			nView.RPC("AssignNewTask",Network.connections[1]);
-			noTasks1 = false;
-		}else if(noTasks1 && Network.connections.Length >= 4){
-			nView.RPC("AssignNewTask",Network.connections[2]);
-			nView.RPC("AssignNewTask",Network.connections[3]);
-			noTasks2 = false;
+			//nView.RPC("AssignNewTask",Network.connections[2]);
+			//nView.RPC("AssignNewTask",Network.connections[3]);
+			noTasks = false;
 		}
 	}
 
@@ -103,15 +103,19 @@ public class MiniGameManager : MonoBehaviour {
 	[RPC]
 	private void InquireNewTask(NetworkPlayer inquirer){
 		if(inquirer == Network.connections[0]){
+			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[1].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[1]);
 		}
 		else if(inquirer == Network.connections[1]){
+			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[0].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[0]);
 		}
 		else if(inquirer == Network.connections[2]){
+			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[3].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[3]);
 		}
 		else if(inquirer == Network.connections[3]){
+			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[2].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[2]);
 		}
 	}
@@ -120,25 +124,33 @@ public class MiniGameManager : MonoBehaviour {
 	void InquireSetTaskDisplayerText(string task, NetworkMessageInfo info){
 		if(info.sender == Network.connections[0]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[1], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,0,1);
 		}
 		else if(info.sender == Network.connections[1]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[0], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,0,1);
 		}
 		else if(info.sender == Network.connections[2]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[3], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,1,1);
 		}
 		else if(info.sender == Network.connections[3]){
 			nView.RPC("SetTaskDisplayerText",Network.connections[2], task);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered,1,1);
+		}
+	}
+	[RPC]
+	void RequestScoreUpdate(int value, NetworkMessageInfo info){
+		if(info.sender == Network.connections[0] || info.sender == Network.connections[1] ){
+			nView.RPC("UpdateScore",Network.connections[0],0,value);
+			nView.RPC("UpdateScore",Network.connections[1],0,value);
+
+		}
+		else if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
+			nView.RPC("UpdateScore",Network.connections[2],1,value);
+			nView.RPC("UpdateScore",Network.connections[3],1,value);
 		}
 	}
 
 	int previousTask;
 	[RPC]
-	void AssignNewTask(NetworkMessageInfo info){
+	void AssignNewTask(){
 		//Find a random integer to determine next task
 		int rng = Random.Range(0,miniGameButtons.Length);
 		//Ensure that this integer is not equal to the previously found integer, else find a new int
@@ -153,21 +165,35 @@ public class MiniGameManager : MonoBehaviour {
 		miniGameButtons[rngTask].GetComponent<MiniGameButton>().isActive = true;
 
 		//Get the name of the randomly selected button + a random instruction from the buttonCommands and assign them to the new task
-
 		int rng2 = Random.Range(0,buttonCommands.Length);
-		string task = buttonCommands[rng2] + miniGameButtons[rngTask].GetComponent<MiniGameButton> ().name;
+		string task = buttonCommands[rng2] + miniGameButtons[rngTask].GetComponent<MiniGameButton>().buttonName;
 
 		//Request server to change the taskDisplayers text
 		nView.RPC("InquireSetTaskDisplayerText",RPCMode.Server, task);
-		//nView.RPC("UpdateScore",RPCMode.Server, Network.player);
+		if(!Network.isServer){
+			nView.RPC ("RequestScoreUpdate", RPCMode.Server, 1);
+		}
 		previousTask = rngTask;
-		newTask = true;
 	}
-
 	[RPC]
-	void UpdateScore(int team, int val){
-		TeamScore[team] += val;
-		Debug.Log("Current score is: " + TeamScore[0] + "for team 1 and: " + TeamScore[1] + "for team 2");
-		scoreTexts [team].GetComponent<Text> ().text = "Your teams score is: " + TeamScore;
+	void UpdateScore(int team, int value){
+		TeamScore[team] += value;
+		Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
+		scoreTexts [team].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[team];
+	}
+	[RPC]
+	void ResetScore(){
+		TeamScore[0] = 0;
+		TeamScore[1] = 0;
+	}
+	void SetTeamText(){
+		if(Network.player == Network.connections[0] || Network.player== Network.connections[1] ){
+			teamText.GetComponentInChildren<Text>().text = "Team 1";
+		}
+		else if(Network.player == Network.connections[2] || Network.player == Network.connections[3] ){
+			teamText.GetComponentInChildren<Text>().text = "Team 2";
+		}else{
+			teamText.GetComponentInChildren<Text>().text = "Board View";
+		}
 	}
 }
