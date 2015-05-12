@@ -93,11 +93,11 @@ public class MiniGameManager : MonoBehaviour {
 		}
 	}
 
-	//Sets the text in the taskDisplayer
+	//Sets the text in the taskDisplayer aka. this is where the damn instructions are displayed!!!!!!!!!!
 	[RPC]
 	public void SetTaskDisplayerText(string task){
 		Debug.Log("SetTaskDisplayer " + task);
-		taskDisplayer.GetComponent<Text>().text = "Press the "+ task + " button";
+		taskDisplayer.GetComponent<Text>().text = task;
 	}
 	//Assign tasks to a specific player dependant on which one called the method
 	[RPC]
