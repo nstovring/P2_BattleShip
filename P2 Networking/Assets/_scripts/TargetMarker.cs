@@ -3,14 +3,16 @@ using System.Collections;
 
 public class TargetMarker : MonoBehaviour {
 
-	Transform hitShip;
+	public Transform hitShip;
 	public bool hit = false;
 	public GameObject explosion;
 	void Update(){
-		if(hit){
-			hitShip.GetComponent<shipScript>().Hit();
+		/*if(hit && hitShip != null){
+			GetComponent<BoxCollider>().enabled = false;
+			//hitShip.GetComponent<shipScript>().Hit();
+			Debug.Log("A ship has been hit");
 			hit =false;
-		}
+		}*/
 
 	}
 
@@ -21,9 +23,7 @@ public class TargetMarker : MonoBehaviour {
 			renderer.material.color = Color.red;
 		}
 		//This line, this fucking line is the reason why we do not simply copy and paste code without understanding it first -AARGARRGH infinite loop action
-		//GetComponent<NetworkView>().RPC("ChangeColor", RPCMode.OthersBuffered);
 		hit = true;
-		//GetComponent<BoxCollider>().enabled = false;
 	}
 
 	bool hitDone = false;
@@ -32,14 +32,6 @@ public class TargetMarker : MonoBehaviour {
 		GetComponent<NetworkView>().RPC("NetWorkChangeColor",RPCMode.AllBuffered);
 		Network.Instantiate(explosion,transform.position,Quaternion.identity,0);
 	}
-
-	void OnTriggerStay(Collider col){
-		if(col.transform.tag == "Ship" && !hit && !hitDone){
-			hitShip = col.transform;
-			ChangeColor();
-			hitDone = true;
-			hit = true;
-		}
-	}
+	
 
 }

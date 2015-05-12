@@ -17,7 +17,7 @@ Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networki
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.170 seconds
+- Completed reload, in  0.164 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,28 +25,160 @@ desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.dll (this message is harmless)
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1b98 -> priority: 1 
-Server Initializied
+  Thread -> id: e50 -> priority: 1 
+Received pong from 25.60.146.136:25000
+ 
+(Filename:  Line: 845)
+
+Received pong from 172.30.212.246:25000
+ 
+(Filename:  Line: 845)
+
+Server Joined
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player 1 connected from 25.60.146.136:56655
+Player ID is 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-And amount of players connected is 1
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 AllocatedID: 50 spawned
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
 AllocatedID: 51 spawned
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Target Placed
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 52 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 53 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 54 spawned
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -71,7 +203,47 @@ Target Placed
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 Ship Destroyed
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Target Placed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+The server has disconnected from the client. Most likely the server has shut down.
+ 
+(Filename:  Line: 754)
 

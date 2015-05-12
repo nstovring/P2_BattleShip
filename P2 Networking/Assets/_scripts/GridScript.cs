@@ -19,7 +19,7 @@ public class GridScript : MonoBehaviour {
 	void Update () {
 		//If the grid is occupied change the color to red
 		if(occupied){
-			ChangeColor(Color.red);
+			//ChangeColor(Color.red);
 		}
 	}
 	public void setRowCollumn(int row, int collumn){
