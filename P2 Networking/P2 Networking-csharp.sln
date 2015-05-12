@@ -31,12 +31,25 @@ Global
 	EndGlobalSection
 																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 =======
+=======
+<<<<<<< HEAD
+																																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+=======
+																																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> origin/Development-NEW
+=======
+																																																																																																																																				GlobalSection(MonoDevelopProperties) = preSolution
+=======
+																																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+=======
+>>>>>>> origin/Development-NEW
 																																																																																																																																						GlobalSection(MonoDevelopProperties) = preSolution
 <<<<<<< HEAD
 =======
 >>>>>>> origin/Development-NEW
 =======
 																																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> origin/Development-NEW
 >>>>>>> origin/Development-NEW
 >>>>>>> origin/Development-NEW
 		StartupItem = Assembly-CSharp.csproj
