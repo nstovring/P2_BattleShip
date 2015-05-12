@@ -10,6 +10,7 @@ public class CanvasController : StateMachine {
 	public GameObject[] miniGameButtons = new GameObject[6];
 	public Button[] placementbuttons = new Button[7];
 	public Button[] attackingButtons = new Button[3];
+	public Text[] scoreText = new Text[2];
 
 	// Use this for initialization
 	void Start () {
