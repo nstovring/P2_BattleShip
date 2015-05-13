@@ -34,11 +34,11 @@ public class MiniGameButton : MiniGameManager {
 	//If the button is active and the clicker is a client call the RPCCompleted Task method on the server
 	public void CompletedTask(){
 		if (isActive && Network.isClient) {
-						nView.RPC ("RPCCompletedTask", RPCMode.Server, int.Parse (Network.player.ToString ()));
-				} 
+				nView.RPC ("RPCCompletedTask", RPCMode.Server, int.Parse (Network.player.ToString ()));
+			} 
 		else if (!isActive && Network.isClient) {
-					mNView.RPC("RequestScoreUpdate",RPCMode.Server,-1);
-				}
+				mNView.RPC("RequestScoreUpdate",RPCMode.Server,-1);
+			}
 	}
 	//
 	[RPC]

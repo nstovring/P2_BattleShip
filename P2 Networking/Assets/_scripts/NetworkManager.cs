@@ -49,8 +49,6 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log("And amount of players connected is " + Network.connections.Length);
 
 		GetComponent<NetworkView>().RPC("setPlayers",RPCMode.AllBuffered, player, playerID);
-		//player.ToString();
-		//players[playerID-1] = player;
 
 	}
 	[RPC]

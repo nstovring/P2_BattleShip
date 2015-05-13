@@ -9,7 +9,7 @@ public class MiniGameManager : MonoBehaviour {
 	public static int[] TeamScore = {-2,-2};
 	protected NetworkView nView;
 	//StateMachine NetworkView
-	public int MiniGameScoreMin = 20;
+	public int MiniGameScoreMin = 10;
 	private NetworkView sNView;
 	//bool newTask = false;
 	CanvasController canvasController;
@@ -63,22 +63,18 @@ public class MiniGameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(Network.isClient || Network.isServer){
-			SetTeamText();
+		if(Network.isServer){
+			SetTeamText(0);
 		}
 		if(TeamScore[0] >=MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
-			//TeamScore[0] = 0;
-			//TeamScore[1] = 0;
 			noTasks = false;
 		}else if(TeamScore[1] >= MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
-			//TeamScore[0] = 0;
-			//TeamScore[1] = 0;
 			noTasks = false;
 			//noTasks2 = true;
 		}
@@ -90,7 +86,7 @@ public class MiniGameManager : MonoBehaviour {
 	//At the beggining of each minigame round noTasks 1 & 2 are true
 	bool noTasks = true;
 	void InitializeMiniGames(){
-		if(noTasks && Network.connections.Length >= 2){
+		if(noTasks && Network.connections.Length >= 4){
 			nView.RPC("AssignNewTask",Network.connections[0]);
 			nView.RPC("AssignNewTask",Network.connections[1]);
 			nView.RPC("AssignNewTask",Network.connections[2]);
@@ -146,11 +142,26 @@ public class MiniGameManager : MonoBehaviour {
 		if(info.sender == Network.connections[0] || info.sender == Network.connections[1] ){
 			nView.RPC("UpdateScore",Network.connections[0],0,value);
 			nView.RPC("UpdateScore",Network.connections[1],0,value);
+			nView.RPC("SetTeamText",Network.connections[1], 1);
+			nView.RPC("SetTeamText",Network.connections[0], 1);
+
+			teamText.GetComponentInChildren<Text>().text = "Team 1";
+			TeamScore[0] += value;
+			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
+			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[0];
+			Debug.Log("Updating Score for team 1");
 
 		}
-		else if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
+		if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
 			nView.RPC("UpdateScore",Network.connections[2],1,value);
 			nView.RPC("UpdateScore",Network.connections[3],1,value);
+			nView.RPC("SetTeamText",Network.connections[2],2);
+			nView.RPC("SetTeamText",Network.connections[3],2);
+			teamText.GetComponentInChildren<Text>().text = "Team 2";
+			TeamScore[1] += value;
+			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
+			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[1];
+			Debug.Log("Updating Score for team 2");
 		}
 	}
 
@@ -176,16 +187,16 @@ public class MiniGameManager : MonoBehaviour {
 
 		//Request server to change the taskDisplayers text
 		nView.RPC("InquireSetTaskDisplayerText",RPCMode.Server, task);
-		if(!Network.isServer){
+		//if(!Network.isServer){
 			nView.RPC ("RequestScoreUpdate", RPCMode.Server, 1);
-		}
+		//}
 		previousTask = rngTask;
 	}
 	[RPC]
 	void UpdateScore(int team, int value){
 		TeamScore[team] += value;
 		Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
-		scoreTexts [team].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[team];
+		scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[team];
 	}
 	[RPC]
 	void ResetScore(){
@@ -193,16 +204,14 @@ public class MiniGameManager : MonoBehaviour {
 		TeamScore[1] = 0;
 	}
 	[RPC]
-	void SetTeamText(){
-		if(Network.isClient){
-			if(Network.player == Network.connections[0] || Network.player== Network.connections[1] ){
-				teamText.GetComponentInChildren<Text>().text = "Team 1";
-			}
-			else if(Network.player == Network.connections[2] || Network.player == Network.connections[3] ){
-				teamText.GetComponentInChildren<Text>().text = "Team 2";
-			}
-		}
-		else{
+	void SetTeamText(int team){
+		if(team == 1){
+			teamText.GetComponentInChildren<Text>().text = "Team 1";
+
+		}else if(team == 2){
+			teamText.GetComponentInChildren<Text>().text = "Team 2";
+
+		}else{
 			teamText.GetComponentInChildren<Text>().text = "Board View";
 		}
 	}
