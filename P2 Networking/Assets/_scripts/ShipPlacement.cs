@@ -52,7 +52,7 @@ public class ShipPlacement : StateMachine {
 			}
 		}
 		//Disable or enable shiplacement button depending on allshipsPlaced bool
-		buttons[6].interactable = allShipsPlaced ? false: true;
+		//buttons[6].interactable = allShipsPlaced ? false: true;
 
 		if(Network.isServer){
 			for(int i = 0; i< buttons.Length; i++){
