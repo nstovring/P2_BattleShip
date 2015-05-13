@@ -188,7 +188,7 @@ public class MiniGameManager : MonoBehaviour {
 		//Request server to change the taskDisplayers text
 		nView.RPC("InquireSetTaskDisplayerText",RPCMode.Server, task);
 		//if(!Network.isServer){
-			nView.RPC ("RequestScoreUpdate", RPCMode.Server, 1);
+			//nView.RPC ("RequestScoreUpdate", RPCMode.Server, 1);
 		//}
 		previousTask = rngTask;
 	}

@@ -1,13 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\P2 Networking\Assets\_scripts\MiniGameButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\P2 Networking\Assets\_scripts\MiniGameManager.cs">
     <Files>
-      <File FileName="..\..\..\P2 Networking\Assets\_scripts\MiniGameManager.cs" Line="105" Column="52" />
-      <File FileName="..\..\..\P2 Networking\Assets\_scripts\MiniGameButton.cs" Line="43" Column="4" />
-      <File FileName="..\..\..\P2 Networking\Assets\_scripts\ShipPlacement.cs" Line="55" Column="12" />
-      <File FileName="..\..\..\P2 Networking\Assets\_scripts\ServerAttacking.cs" Line="13" Column="4" />
-      <File FileName="..\..\..\P2 Networking\Assets\_scripts\TargetMarker.cs" Line="38" Column="1" />
-      <File FileName="..\..\..\P2 Networking\Assets\_scripts\shipScript.cs" Line="17" Column="1" />
+      <File FileName="..\..\..\P2 Networking\Assets\_scripts\MiniGameManager.cs" Line="191" Column="6" />
+      <File FileName="..\..\..\P2 Networking\Assets\_scripts\MiniGameButton.cs" Line="37" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
