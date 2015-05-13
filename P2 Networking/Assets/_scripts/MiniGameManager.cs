@@ -70,11 +70,13 @@ public class MiniGameManager : MonoBehaviour {
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered);
 			noTasks = false;
 		}else if(TeamScore[1] >= MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
+			nView.RPC("UpdateScore",RPCMode.AllBuffered);
 			noTasks = false;
 			//noTasks2 = true;
 		}
