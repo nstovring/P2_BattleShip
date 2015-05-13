@@ -56,7 +56,8 @@ public class MiniGameManager : MonoBehaviour {
 		}
 		//Display to the clients which team they are on
 		if(Network.isClient || Network.isServer){
-		SetTeamText();
+			nView.RPC("SetTeamText",RPCMode.Server);
+		//SetTeamText();
 		}
 	}
 
@@ -92,8 +93,8 @@ public class MiniGameManager : MonoBehaviour {
 		if(noTasks && Network.connections.Length >= 2){
 			nView.RPC("AssignNewTask",Network.connections[0]);
 			nView.RPC("AssignNewTask",Network.connections[1]);
-			//nView.RPC("AssignNewTask",Network.connections[2]);
-			//nView.RPC("AssignNewTask",Network.connections[3]);
+			nView.RPC("AssignNewTask",Network.connections[2]);
+			nView.RPC("AssignNewTask",Network.connections[3]);
 			noTasks = false;
 		}
 	}
@@ -191,6 +192,7 @@ public class MiniGameManager : MonoBehaviour {
 		TeamScore[0] = 0;
 		TeamScore[1] = 0;
 	}
+	[RPC]
 	void SetTeamText(){
 		if(Network.isClient){
 			if(Network.player == Network.connections[0] || Network.player== Network.connections[1] ){

@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\MiniGameManager.cs">
     <Files>
-      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="198" Column="5" />
+      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="203" Column="5" />
+      <File FileName="Assets\_scripts\MiniGameButton.cs" Line="33" Column="3" />
+      <File FileName="Assets\_scripts\NetworkManager.cs" Line="9" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
