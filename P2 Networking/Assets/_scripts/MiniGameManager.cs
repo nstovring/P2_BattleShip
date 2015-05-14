@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 public class MiniGameManager : MonoBehaviour {
 
-	public static int[] TeamScore = {-2,-2};
+	public static int[] TeamScore = {0,0};
 	protected NetworkView nView;
 	//StateMachine NetworkView
-	public int MiniGameScoreMin = 10;
+	public int MiniGameScoreMin = 5;
 	public float countdownTimer = 5f;
 	private NetworkView sNView;
 	//bool newTask = false;
@@ -82,6 +82,7 @@ public class MiniGameManager : MonoBehaviour {
 		}
 		//At the start of a game assign a task for each player
 		InitializeMiniGames();
+		ResetScore();
 		//Set the teamtext dialogbox
 	}
 	
@@ -144,26 +145,21 @@ public class MiniGameManager : MonoBehaviour {
 		if(info.sender == Network.connections[0] || info.sender == Network.connections[1] ){
 			nView.RPC("UpdateScore",Network.connections[0],0,value);
 			nView.RPC("UpdateScore",Network.connections[1],0,value);
-			nView.RPC("SetTeamText",Network.connections[1], 1);
-			nView.RPC("SetTeamText",Network.connections[0], 1);
 
-			teamText.GetComponentInChildren<Text>().text = "Team 1";
+			/*teamText.GetComponentInChildren<Text>().text = "Team 1";
 			TeamScore[0] += value;
 			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
 			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[0];
-			Debug.Log("Updating Score for team 1");
+			Debug.Log("Updating Score for team 1");*/
 			return;
 		}
 		if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
 			nView.RPC("UpdateScore",Network.connections[2],1,value);
 			nView.RPC("UpdateScore",Network.connections[3],1,value);
-			nView.RPC("SetTeamText",Network.connections[2],2);
-			nView.RPC("SetTeamText",Network.connections[3],2);
-			teamText.GetComponentInChildren<Text>().text = "Team 2";
-			TeamScore[1] += value;
+/*			TeamScore[1] += value;
 			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
 			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[1];
-			Debug.Log("Updating Score for team 2");
+			Debug.Log("Updating Score for team 2");*/
 			return;
 		}
 	}
@@ -190,9 +186,6 @@ public class MiniGameManager : MonoBehaviour {
 
 		//Request server to change the taskDisplayers text
 		nView.RPC("InquireSetTaskDisplayerText",RPCMode.Server, task);
-		//if(!Network.isServer){
-			//nView.RPC ("RequestScoreUpdate", RPCMode.Server, 1);
-		//}
 		previousTask = rngTask;
 	}
 	[RPC]
@@ -211,10 +204,10 @@ public class MiniGameManager : MonoBehaviour {
 	}
 	[RPC]
 	void SetTeamText(int team){
-		if(team == 1){
+		if(team == 1 && Network.isClient){
 			teamText.GetComponentInChildren<Text>().text = "Team 1";
 
-		}else if(team == 2){
+		}else if(team == 2 && Network.isClient){
 			teamText.GetComponentInChildren<Text>().text = "Team 2";
 
 		}else{

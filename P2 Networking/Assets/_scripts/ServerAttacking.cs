@@ -11,7 +11,7 @@ public class ServerAttacking : MonoBehaviour {
 	public GameObject[] targetMarkers = new GameObject[2];
 	public GameObject[] ghostTargetMarkers = new GameObject[2];
 	public LayerMask mylayerMask;
-	private int gridLayer = 1<< 8;
+	//private int gridLayer = 1<< 8;
 	int currentTargetMarker = 0;
 	//bool nextTurn = false;
 	public float nextTurnTimer = 3f;
@@ -38,6 +38,7 @@ public class ServerAttacking : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray,out hit, 100,mylayerMask)){
+			//if()
 			if(hit.transform.tag == "GridSquare"){
 				//If left mousebutton pressed
 				if(Input.GetMouseButtonDown(0) && currentTargetMarker < 2){
@@ -48,6 +49,7 @@ public class ServerAttacking : MonoBehaviour {
 			}
 		}
 	}
+
 	void DisplayGhostMarker(RaycastHit hit, int currentMarker){
 			ghostTargetMarkers[currentMarker].transform.position = hit.transform.position;
 	}

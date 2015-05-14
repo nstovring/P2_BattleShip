@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class ShipPlacement : StateMachine {
 	public GameObject[] ships = new GameObject[4];
 	public GameObject[] ghostShips = new GameObject[4];
+	public GameObject[] netGhostShips = new GameObject[4];
+
 	public Button[] buttons = new Button[6];
 	public bool ready = false;
 	bool readySet = false;
@@ -12,19 +14,16 @@ public class ShipPlacement : StateMachine {
 	public int[] availableShips = {1,2,1,1};
 //	shipScript selectedShipScript;
 	private int gridLayer = 1<< 8;
-	//interesting stuff gotta investigate later
-	//gridLayer = ~gridLayer;
 	GridScript gridScript;
 	RaycastHit hit;
 	private int selectedShip;
 	bool allShipsPlaced = false;
 	private bool placingShip = false;
+	public LayerMask myLayerMask;
 	[RPC]
 	public bool GetReady(){
 		return ready;
 	}
-
-
 	public void setPlacingShip(bool placing){
 		placingShip = placing;
 	}
@@ -41,7 +40,21 @@ public class ShipPlacement : StateMachine {
 	public void setReady(bool _ready){
 		ready = _ready;
 	}
-	
+
+	void Start(){
+		//Instantiate Networked Ghost Ships
+		nView = GameObject.Find("_StateMachine").GetComponent<NetworkView>();
+		/*for(int i = 0; i < ships.Length; i++){
+			netGhostShips[i] = Network.Instantiate(ghostShips[i],transform.position,Quaternion.identity,0) as GameObject;
+		}*/
+	}
+
+	public void SpawnGhostShips(){
+		for(int i = 0; i < ships.Length; i++){
+			netGhostShips[i] = Network.Instantiate(ghostShips[i],new Vector3(50,0,0),Quaternion.identity,0) as GameObject;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		for(int i= 0; i < availableShips.Length; i++){
@@ -73,17 +86,21 @@ public class ShipPlacement : StateMachine {
 		//Rotate buttons only interactable if a ship is currently being placed
 		buttons[4].interactable = !placingShip ? false: true;
 		buttons[5].interactable = !placingShip ? false: true;
+		buttons[0].interactable = ghostShipActive ? false: true;
+		buttons[1].interactable = ghostShipActive ? false: true;
+		buttons[2].interactable = ghostShipActive ? false: true;
+		buttons[3].interactable = ghostShipActive ? false: true;
 		//To ensure only clients are able to place ships
 	#if UNITY_EDITOR
-		if(Network.isClient){
+		if(Network.isClient && State == 0){
 		Placement();
 		}
 	#elif UNITY_STANDALONE_WIN
-		if(Network.isClient){
+		if(Network.isClient && State == 0){
 		Placement();
 		}
 	#elif UNITY_ANDROID
-		if(Network.isClient){
+		if(Network.isClient && State == 0){
 		AndroidPlacement();
 		}
 	#endif
@@ -118,21 +135,24 @@ public class ShipPlacement : StateMachine {
 			}
 		}
 	}
-
+	bool ghostShipActive = false;
 	void DisplayGhostShip(RaycastHit hit){
-	 	shipScript ShipScript = ghostShips[selectedShip].GetComponent<shipScript>();
+		ghostShipActive = true;
+	 	shipScript ShipScript = netGhostShips[selectedShip].GetComponent<shipScript>();
 		GridScript gridScript = hit.transform.GetComponent<GridScript>();
-
+		//GameObject clone = Network.Instantiate()
 		if(gridScript.rotationPossible(ShipScript)&& RotateLeft){
+			//netGhostShips[selectedShip].transform.RotateAround(transform.position, Vector3.up,90);
 			ShipScript.RotateShipLeft();
 			RotateLeft = false;
 		}
 		if(gridScript.rotationPossible(ShipScript) && RotateRight){
+			//netGhostShips[selectedShip].transform.RotateAround(transform.position, Vector3.up,-90);
 			ShipScript.RotateShipRight();
 			RotateRight = false;
 		}
 		if(!gridScript.getOccupied(ShipScript)){
-		ghostShips[selectedShip].transform.position = hit.transform.position;
+		netGhostShips[selectedShip].transform.position = hit.transform.position;
 		}
 	}
 	public bool RotateRight;
@@ -145,28 +165,31 @@ public class ShipPlacement : StateMachine {
 	}
 
 	public void RotateShipLeft(){
-		shipScript ShipScript = ghostShips[selectedShip].GetComponent<shipScript>();
-		ShipScript.RotateShipRight();
-		//RotateLeft = true;
+		shipScript ShipScript = netGhostShips[selectedShip].GetComponent<shipScript>();
+		netGhostShips[selectedShip].GetComponent<NetworkView>().RPC("RotateShipLeft",RPCMode.AllBuffered);
+		ShipScript.RotateShipLeft();
+		RotateLeft = true;
 	}
 	public void RotateShipRight(){
-		shipScript ShipScript = ghostShips[selectedShip].GetComponent<shipScript>();
-		ShipScript.RotateShipLeft();
-		//RotateRight = true;
+		shipScript ShipScript = netGhostShips[selectedShip].GetComponent<shipScript>();
+		netGhostShips[selectedShip].GetComponent<NetworkView>().RPC("RotateShipRight",RPCMode.AllBuffered);
+		ShipScript.RotateShipRight();
+		RotateRight = true;
 	}
 
 	public void DeployShip(){
 		if(placingShip){
 		//Instantiate a ship at the position of the ghost ship
-		Network.Instantiate(ships[selectedShip],ghostShips[selectedShip].transform.position,ghostShips[selectedShip].transform.rotation,0);
+		Network.Instantiate(ships[selectedShip],netGhostShips[selectedShip].transform.position,netGhostShips[selectedShip].transform.rotation,0);
 		//Move the ghost ship away
-		ghostShips[selectedShip].transform.position = new Vector3(50,0,0);
+		netGhostShips[selectedShip].transform.position = new Vector3(50,0,0);
 		//Reduce amount of ships Avaliable
 		substractShip(1,selectedShip);
 		//Disable Shipbutton if there are no more ships avaliable
 		buttons[selectedShip].interactable = availableShips[selectedShip] == 0 ? false : true;
 		//Player is no longer placing a ship
 		setPlacingShip(false);
+		ghostShipActive = false;
 		//Reset the selectedShip Variable
 		}
 	}
