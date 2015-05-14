@@ -17,7 +17,31 @@ Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networki
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.090 seconds
+- Completed reload, in  0.110 seconds
+desktop: 1920x1080 59Hz; virtual: 1920x2160 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [igdumdim32.dll 10.18.14.4029]
+    Renderer: Intel(R) HD Graphics Family
+    Vendor:   Intel
+    VRAM:     1792 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 NULL=1 RESZ=1 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.070 seconds
 desktop: 1920x1080 59Hz; virtual: 1920x2160 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,16 +49,184 @@ desktop: 1920x1080 59Hz; virtual: 1920x2160 at 0,0
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.dll (this message is harmless)
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2018 -> priority: 1 
-Server Initializied
+  Thread -> id: 1bd8 -> priority: 1 
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 19f0 -> priority: 1 
+Received pong from 25.60.146.136:25000
+ 
+(Filename:  Line: 845)
+
+Received pong from 192.168.1.91:25000
+ 
+(Filename:  Line: 845)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player 1 connected from 25.60.146.136:49615
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-And amount of players connected is 1
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Server Joined Player ID is 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -54,13 +246,297 @@ AllocatedID: 53 spawned
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player 2 connected from 25.60.146.136:49617
+Received pong from 25.60.146.136:25000
+ 
+(Filename:  Line: 845)
+
+Received pong from 192.168.1.91:25000
+ 
+(Filename:  Line: 845)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-And amount of players connected is 1
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not setCto an instance urren tbject
+  at MiniGameMan 1 and:pda for team 2
+ 
+(Filenamen: 2C:/lue) dslave/unitinbuild/nrtif unts/wge:0er
+atety/cngone.Ne/runktime/UnityEng_RPeDebetg.ogkView,  Line:, 56)M
+o
+de, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Objelt[])f
+MincGamExceptir:ResbjtScorr(e
+fierenceManager: Oo on ictedToee ver()
+ 
+(Fict
+ amet  Line: -1Man
+a
+ger.UpdateScore (Int32 team, Inut32 v slue) [0x00000r ]e mi1n <filename unam 2
+ 
+(F 
+ 
+(Fme: C:/buildsne: e1/
+u
+nity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworCVuer, rtring,eRPnModecoObeect[:)
+UnityEneame Ne wand: 0 foPC(Strm 2
+  R
+PCMode, ObjC:t[buil
+dslave/unity/build/artifacts/
+gennerateanagcr:ommonnectntime/UnityEng
+in
+(Fieebame:  Line: -1)
+
+ 56)
+
+Current score is: 0Nfor team 1 and: 0 for tioam 2
+ 
+(Filename: C:/builsdsltave/unity/build/artifacect
+  ner MiniGameManagentime/UteScore (Intebu team,.cpp Linealue) [
+
+0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferencCurrent score is: 0 for team 1 and: 0 for team 2n
+ c
+(e oen me: C:/but
+  at MiniGaty/bauald/rr.ipdateScgre (Inated/common/runtime/UnityEngineDebug.gen.cpp Line: own>:
+0
+ 
+UnityEngine.NetworkView:Internal_RReferencerkViepew, Stringct RPCMode, Object[])
+UonatyEinsine.NetworkView:RPC(
+StrtiMiniGRmeManagerObjeca[t)
+MioiGameInt32 te:mResetScore()
+MiniG00000] in <filename undToSer:0ve
+r(
+(Fi
+ en
+aFil:  ame:  Line:
+ 
+-1)
+
+Current scoCurre:t s for team 1 and: 0 fo1 aneam 2
+ 
+(Filename
+: 
+C:/builds: C:/buildslave/unity/build/artifitts/ugle/arratea/comso/generated/common/runtimug.gen.cpp Line: 56)
+
+n.cpp Line: 56)
+
+NullReferenceNullReferencejxeectiornferenjeect refer to an instance  an an object
+ f an object
+  at MiniGamateScore .Updat2 team, (Int32  aleue) Intx00000] in <filena0]  unknfilename 
+un
+known>:0 
+Unitne: -1)
+
+NetworkView:ICurreal_ scC(Ne tworkVier team 1 and: 0 for team 2
+ 
+(
+UnityEng: C:/buildslView:RPCty(bSild/ag, Rfacts/generated/com
+mon/runtManager:tyEngineDebug.
+gen.cpp Line: r:5n6o)n
+
+tedToServer()
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at SinrGveer Joined PlaterScore ( 2
+t3
+(Filename: C:/buildslave/unity/build/artifacts/g2neteam, Int3on/2u valueUnityEngineDebug.gen.cpp Line: 56)
+
+filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 AllocatedID: 200 spawned
  
@@ -78,51 +554,206 @@ AllocatedID: 203 spawned
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player 3 connected from 25.60.146.136:49620
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-And amount of players connected is 1
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 350 spawned
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 351 spawned
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 352 spawned
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 353 spawned
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player 4 connected from 25.60.146.136:49622
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-And amount of players connected is 1
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 500 spawned
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 501 spawned
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 502 spawned
+Current score is: 0 for team 1 and: 0 for team 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-AllocatedID: 503 spawned
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+A
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+ocatedID: 200 spawned
+ 
+(Filename: C:/NuillRslave/unity/build/artifacts/generated/common/ro an instance of an object
+  at MiniGameManager/UnityEngireneDet32 team, Int32 balue) [0x0000ug.gen.cppename un5now6>:) 
+ 
+(Filename:  Line: -1)
+
+ACurrent score is: 0 for2tea01 spawnedd 
+(Ffolenam teae: C
+ 
+(Filename: C:/buildslave/unity/build/arti/acts/generatueitcommon/ru/time/UnityEnginebebug.gen.cpp Liue: 56)
+
+facts/generated/common/runtime/UnityEngineDebug.gen.Nupp LllReferenceException:: O)je
+
+ct reference not set to an instance of an object
+  Al MiatedaID: 202 spawned
+ 
+(Filename: C:/buildsl2ve/unit value) [rtifacts/generated/common/runtime/U
+niyEFilename:  Line: -1)
+
+Current score p Line: 56)
+am 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifcts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: A6)l
+l
+ocatedID: 203 spawned
+ 
+(Nilename: C:ebuxceptiave/unity/build/artifacts/generated/common/runtime/UnityEn
+gineDebug.gen.cpp Line: 56)
+core (Int32 tea
+ Int32 value) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 50 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+AllocatedID: 51 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+AllocatedID: 52 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+AllocatedID: 53 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+SetTaskDisplayer Flush out the Drain holes
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+SetTaskDisplayer Refill the Engine bed plate
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+I am ready
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Some is Ready:0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Some is Ready:0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+I am ready
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Some is Ready:1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Some is Ready:1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Deactivating this Button and Asking for a NewTask
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 1 for team 1 and: 0 forCteam 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+ent score is: 1 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Deactivating this Button and Asking for a NewTask
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Cururrent score is: 2 for team 1 rent scoor teamr2
+ is
+:Filename: C:/buildslave/unity/build/m 2
+ 
+(Fileenname: C:om/buildslave/U/unity/builebug.gen.cpp gine: 56)
+
+common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+SetTaskDisplayer Fetch the Air-flask
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 

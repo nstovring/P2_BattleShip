@@ -32,7 +32,7 @@ public class NetworkManager : MonoBehaviour {
 			Layouts[i].CreateLayout();
 		}
 		teamText.GetComponentInChildren<Text>().text = "Board View";
-		teamText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-440,0);
+		teamText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-440,300);
 
 		Debug.Log("Server Initializied");
 	}

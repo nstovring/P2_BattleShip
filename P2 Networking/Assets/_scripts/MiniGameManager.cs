@@ -24,7 +24,7 @@ public class MiniGameManager : MonoBehaviour {
 	public StateMachine stateMachine;
 	public NetworkManager networkManager;
 	Text[] scoreTexts = new Text[1];
-
+	//public Text scoreText;
 	//used for storing random numbers that are used when assigning button names.
 	List<int> randomList = new List<int>();
 
@@ -56,10 +56,12 @@ public class MiniGameManager : MonoBehaviour {
 			}
 		}
 		//Display to the clients which team they are on
-		if(Network.isClient){
-			nView.RPC("SetTeamText",RPCMode.Server);
-		//SetTeamText();
-		}
+		//Reset the score 
+	}
+	void OnConnectedToServer(){
+		//if(scoreTexts[0] != null){
+		ResetScore();
+		//}
 	}
 
 	// Update is called once per frame
@@ -82,18 +84,18 @@ public class MiniGameManager : MonoBehaviour {
 		}
 		//At the start of a game assign a task for each player
 		InitializeMiniGames();
-		ResetScore();
+
 		//Set the teamtext dialogbox
 	}
 	
 	//At the beggining of each minigame round noTasks 1 & 2 are true
 	bool noTasks = true;
 	void InitializeMiniGames(){
-		if(noTasks && Network.connections.Length >= 4){
+		if(noTasks && Network.connections.Length >= 2){
 			nView.RPC("AssignNewTask",Network.connections[0]);
 			nView.RPC("AssignNewTask",Network.connections[1]);
-			nView.RPC("AssignNewTask",Network.connections[2]);
-			nView.RPC("AssignNewTask",Network.connections[3]);
+			//nView.RPC("AssignNewTask",Network.connections[2]);
+			//nView.RPC("AssignNewTask",Network.connections[3]);
 			noTasks = false;
 		}
 	}
@@ -192,7 +194,7 @@ public class MiniGameManager : MonoBehaviour {
 	void UpdateScore(int team, int value){
 		TeamScore[team] += value;
 		Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
-		scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[team];
+		scoreTexts[0].text = "Your teams score is: " + TeamScore[team];
 	}
 	[RPC]
 	void ResetScore(){
