@@ -1,24 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class ServerAttacking : StateMachine {
+public class ServerAttacking : MonoBehaviour {
 
 	public GameObject targetMarker;
 	public GameObject GhostTargetMarker;
 	public StateMachine stateMachine;
+	public Text countDownTimerTextBox;
 	public GameObject[] targetMarkers = new GameObject[2];
 	public GameObject[] ghostTargetMarkers = new GameObject[2];
+	public LayerMask mylayerMask;
 	private int gridLayer = 1<< 8;
 	int currentTargetMarker = 0;
 	//bool nextTurn = false;
 	public float nextTurnTimer = 3f;
+	public int turns = 0;
+	public int maxTurns = 5;
+	public float countdownTimer = 5f;
+	NetworkView nView;
+	//StateMachine stateMachine;
+
 	//int targetMarkers = 2;
 	void Start(){
 		nView = GetComponent<NetworkView>();
+		stateMachine = GetComponent<StateMachine>();
 	}
 	// Update is called once per frame
 	void Update () {
-		if(Network.isServer && State == 2){
+		if(Network.isServer && stateMachine.GetState() == 2){
 			SelectTarget();
 		}
 	}
@@ -27,7 +37,7 @@ public class ServerAttacking : StateMachine {
 		//nView = GetComponent<NetworkView>();
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
-		if (Physics.Raycast(ray,out hit, 100,gridLayer)){
+		if (Physics.Raycast(ray,out hit, 100,mylayerMask)){
 			if(hit.transform.tag == "GridSquare"){
 				//If left mousebutton pressed
 				if(Input.GetMouseButtonDown(0) && currentTargetMarker < 2){
@@ -41,25 +51,54 @@ public class ServerAttacking : StateMachine {
 	void DisplayGhostMarker(RaycastHit hit, int currentMarker){
 			ghostTargetMarkers[currentMarker].transform.position = hit.transform.position;
 	}
-	public int turns = 0;
+
 	public void FireSalvo(){
 		foreach(GameObject ghostTargetMarker in ghostTargetMarkers){
 			nView.RPC("DeployTargetMarker",RPCMode.AllBuffered, ghostTargetMarker.transform.position);
 		}
 		currentTargetMarker = 0;
 		//nextTurn = true;
-		if(stateMachine.GetTeamTurn() == 1 && turns < 2){
+		if(stateMachine.GetTeamTurn() == 1 && turns < maxTurns){
 		stateMachine.SetTeamTurn(2);
 			turns++;
-		}else if(stateMachine.GetTeamTurn() == 2 && turns < 2){
+		}else if(stateMachine.GetTeamTurn() == 2 && turns < maxTurns){
 		stateMachine.SetTeamTurn(1);
 			turns++;
 		}
-		if(turns >= 2){
-			nView.RPC("ChangeState",RPCMode.AllBuffered,1);
-			stateMachine.SetTeamTurn(0);
+		if(turns >= maxTurns){
 			turns = 0;
+			StartCoroutine("CountDownToNextPhase");
+			/*stateMachine.SetTeamTurn(0);
+			countdownTimer -= Time.deltaTime * 1;
+			countDownTimerTextBox.text = "Calibrate your ships in: " + Mathf.RoundToInt(countdownTimer);
+			if(countdownTimer <= 0){
+			countDownTimerTextBox.text = "GO!";
+			nView.RPC("ChangeState",RPCMode.AllBuffered,1);
+			turns = 0;*/
+			//}
 		}
+	}
+	
+	IEnumerator CountDownToNextPhase(){
+		stateMachine.SetTeamTurn(0);
+		//countdownTimer -= Time.deltaTime * 1;
+		countDownTimerTextBox.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5, 285);
+		while(countdownTimer > 0f){
+			countdownTimer -= Time.deltaTime * 1;
+			countDownTimerTextBox.text = "Calibrate your ships in: " + Mathf.RoundToInt(countdownTimer);
+			yield return null;
+		}
+		//if(countdownTimer <= 0){
+		countDownTimerTextBox.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5, 800);
+
+		countDownTimerTextBox.text = "GO!";
+		nView.RPC("ChangeState",RPCMode.AllBuffered,1);
+		countdownTimer = 0f;
+		//turns = 0;
+		StopCoroutine("CountDownToNextPhase");
+
+		yield return null;
+		//}
 	}
 
 

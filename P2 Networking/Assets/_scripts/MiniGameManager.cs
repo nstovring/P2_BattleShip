@@ -10,6 +10,7 @@ public class MiniGameManager : MonoBehaviour {
 	protected NetworkView nView;
 	//StateMachine NetworkView
 	public int MiniGameScoreMin = 10;
+	public float countdownTimer = 5f;
 	private NetworkView sNView;
 	//bool newTask = false;
 	CanvasController canvasController;
@@ -55,7 +56,7 @@ public class MiniGameManager : MonoBehaviour {
 			}
 		}
 		//Display to the clients which team they are on
-		if(Network.isClient || Network.isServer){
+		if(Network.isClient){
 			nView.RPC("SetTeamText",RPCMode.Server);
 		//SetTeamText();
 		}
@@ -70,13 +71,12 @@ public class MiniGameManager : MonoBehaviour {
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered);
 			noTasks = false;
 		}else if(TeamScore[1] >= MiniGameScoreMin && Network.isServer){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
-			nView.RPC("UpdateScore",RPCMode.AllBuffered);
+			//nView.RPC("UpdateScore",RPCMode.AllBuffered);
 			noTasks = false;
 			//noTasks2 = true;
 		}
@@ -105,20 +105,20 @@ public class MiniGameManager : MonoBehaviour {
 	}
 	//Assign tasks to a specific player dependant on which one called the method
 	[RPC]
-	private void InquireNewTask(NetworkPlayer inquirer){
-		if(inquirer == Network.connections[0]){
+	private void InquireNewTask(NetworkPlayer inquirer, NetworkMessageInfo info){
+		if(info.sender == Network.connections[0]){
 			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[1].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[1]);
 		}
-		else if(inquirer == Network.connections[1]){
+		else if(info.sender == Network.connections[1]){
 			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[0].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[0]);
 		}
-		else if(inquirer == Network.connections[2]){
+		else if(info.sender == Network.connections[2]){
 			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[3].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[3]);
 		}
-		else if(inquirer == Network.connections[3]){
+		else if(info.sender == Network.connections[3]){
 			Debug.Log ("Assigning task to player " + int.Parse(Network.connections[2].ToString()));
 			nView.RPC("AssignNewTask",Network.connections[2]);
 		}
@@ -152,7 +152,7 @@ public class MiniGameManager : MonoBehaviour {
 			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
 			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[0];
 			Debug.Log("Updating Score for team 1");
-
+			return;
 		}
 		if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
 			nView.RPC("UpdateScore",Network.connections[2],1,value);
@@ -164,9 +164,10 @@ public class MiniGameManager : MonoBehaviour {
 			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
 			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[1];
 			Debug.Log("Updating Score for team 2");
+			return;
 		}
 	}
-
+	//The previously assigned task is saved in this variable
 	int previousTask;
 	[RPC]
 	void AssignNewTask(){
@@ -204,6 +205,9 @@ public class MiniGameManager : MonoBehaviour {
 	void ResetScore(){
 		TeamScore[0] = 0;
 		TeamScore[1] = 0;
+		nView.RPC("UpdateScore",RPCMode.AllBuffered,0,0);
+		nView.RPC("UpdateScore",RPCMode.AllBuffered,1,0);
+
 	}
 	[RPC]
 	void SetTeamText(int team){

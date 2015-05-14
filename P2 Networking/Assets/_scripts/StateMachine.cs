@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class StateMachine : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class StateMachine : MonoBehaviour {
 	public bool miniGame;
 	public bool attacking;
 	public int teamTurn = 0;
+	public float countdownTimer = 10f;
+	public Text countDownTimerTextBox;
 	public static int TeamTurn;
 	//Is only two for testing
 	public int readyPlayerMin = 4;
@@ -19,6 +22,10 @@ public class StateMachine : MonoBehaviour {
 	void Start () {
 		//Get this objects NetworkView
 		nView = GetComponent<NetworkView>();
+	}
+
+	public int GetState(){
+		return State;
 	}
 	
 	// Update is called once per frame
@@ -45,8 +52,30 @@ public class StateMachine : MonoBehaviour {
 		Debug.Log ("Some is Ready:" + readyPlayers);
 		readyPlayers+= playerReady;
 		if(readyPlayers >= readyPlayerMin){
-		nView.RPC("ChangeState", RPCMode.AllBuffered,1);
+			StartCoroutine("CountDownToNextPhase");
+		//nView.RPC("ChangeState", RPCMode.AllBuffered,1);
 		}
+	}
+
+	IEnumerator CountDownToNextPhase(){
+		SetTeamTurn(0);
+		countDownTimerTextBox.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5, 285);
+		//countdownTimer -= Time.deltaTime * 1;
+		//countDownTimerTextBox.text = "Calibrate your ships in: " + Mathf.RoundToInt(countdownTimer);
+		while(countdownTimer > 0f){
+			countdownTimer -= Time.deltaTime * 1;
+			countDownTimerTextBox.text = "Calibrate your ships in: " + Mathf.RoundToInt(countdownTimer);
+			yield return null;
+		}
+		//if(countdownTimer <= 0){
+		countDownTimerTextBox.text = "GO!";
+		countDownTimerTextBox.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5, 800);
+		countdownTimer = 0f;
+		readyPlayers = 0;
+		nView.RPC("ChangeState",RPCMode.AllBuffered,1);
+		StopCoroutine("CountDownToNextPhase");
+		yield return null;
+		//}
 	}
 
 	//Sets the state variable
