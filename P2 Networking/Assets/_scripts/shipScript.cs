@@ -24,13 +24,14 @@ public class shipScript : MonoBehaviour {
 			LockShip();
 		}
 	}
-
+	[RPC]
 	public void RotateShipLeft(){
 		float addRotation = transform.localRotation.y; 
 		addRotation = 90;
 		transform.RotateAround(transform.position, Vector3.up, addRotation);
 		currentRotation *= -1;
 	}
+	[RPC]
 	public void RotateShipRight(){
 		float addRotation = transform.localRotation.y; 
 		addRotation = -90;
@@ -46,6 +47,7 @@ public class shipScript : MonoBehaviour {
 	void OnNetworkInstantiate(NetworkMessageInfo info) {
 		nView = GetComponent<NetworkView>();
 		Debug.Log(nView.viewID + " spawned");
+		GetComponent<BoxCollider>().enabled = false;
 		renderers = GetComponentsInChildren<MeshRenderer>();
 		sRenderes = GetComponentsInChildren<SpriteRenderer>();
 		if(Network.isServer){
@@ -79,7 +81,7 @@ public class shipScript : MonoBehaviour {
 		//Network.Destroy(gameObject);
 
 	}
-	bool dead = false;
+	public bool dead = false;
 	// Update is called once per frame
 	void Update () {
 		if(health <= 0 && transform.tag == "Ship" && !dead){
@@ -119,7 +121,6 @@ public class shipScript : MonoBehaviour {
 	}
 	public int targetMarkers = 0;
 	void OnTriggerStay(Collider others){
-
 		if(others.transform.tag == "TargetMarker"){
 			if(others.transform.GetComponent<TargetMarker>().hit == false){
 			targetMarkers++;
@@ -135,4 +136,11 @@ public class shipScript : MonoBehaviour {
 			other.GetComponent<GridScript>().setOccupied(true);
 		}
 	}
+	void OnTriggerExit(Collider other){
+		if(other.transform.tag == "GridSquare" && Network.isClient){
+			other.GetComponent<GridScript>().setOccupied(false);
+		}
+	}
+
+
 }

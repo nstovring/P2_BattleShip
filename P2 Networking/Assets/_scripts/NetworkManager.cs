@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour {
 
 	private const string typeName = "UniqueGameName";
 	private const string gameName = "P2 Networking";
 
+	public GameObject teamText; 
 	public int thisPlayer;
 	public createLayout[] Layouts = new createLayout[2];
+	public ShipPlacement shipPlacement;
 	public GameObject playerPrefab;
 	public GameObject target;
 	public static int playerCount = Network.connections.Length;
@@ -28,25 +31,33 @@ public class NetworkManager : MonoBehaviour {
 		for(int i = 0; i < Layouts.Length; i++){
 			Layouts[i].CreateLayout();
 		}
+		teamText.GetComponentInChildren<Text>().text = "Board View";
+		teamText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-440,0);
+
 		Debug.Log("Server Initializied");
 	}
 	void OnConnectedToServer()
 	{
-		//SpawnPlayer();
-		Debug.Log("Server Joined");
-		Debug.Log("Player ID is " + Network.player.ToString());
+		if(int.Parse(Network.player.ToString()) == 1 || int.Parse(Network.player.ToString()) == 2){
+			teamText.GetComponentInChildren<Text>().text = "Team 1";
+		}else{
+			teamText.GetComponentInChildren<Text>().text = "Team 2";
+		}
+		teamText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-440,-300);
+		Debug.Log("Server Joined " + "Player ID is " + Network.player.ToString());
 		playerCount = int.Parse(Network.player.ToString());
 		thisPlayer = playerCount;
 		for(int i = 0; i < Layouts.Length; i++){
 			Layouts[i].CreateLayout();
 		}
+		shipPlacement.SpawnGhostShips();
 		Camera.main.transform.GetComponent<CameraScript>().AssignClientCamera(playerCount);
 
 	}
 	void OnPlayerConnected(NetworkPlayer player) {
 		playerID = int.Parse(player.ToString());
 		Debug.Log("Player " + playerID + " connected from " + player.ipAddress + ":" + player.port);
-		Debug.Log("And amount of players connected is " + Network.connections.Length);
+		Debug.Log("Amount of players connected is " + Network.connections.Length);
 
 		GetComponent<NetworkView>().RPC("setPlayers",RPCMode.AllBuffered, player, playerID);
 

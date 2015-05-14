@@ -17,6 +17,7 @@ public class CanvasController : StateMachine {
 		ShuffleMiniGameButtonsPosition();
 	}
 	void ShuffleMiniGameButtonsPosition(){
+		//Save initial positions;
 		Vector2[] positions = new Vector2[miniGameButtons.Length];
 		for(int i = 0; i < miniGameButtons.Length; i++){
 			positions[i] = miniGameButtons[i].GetComponent<RectTransform>().anchoredPosition;
@@ -29,6 +30,7 @@ public class CanvasController : StateMachine {
 			positions[rng] = tempPosition;
 
 		}
+		//Apply shuffled positions
 		for(int i = 0; i < miniGameButtons.Length; i++){
 			miniGameButtons[i].GetComponent<RectTransform>().anchoredPosition = positions[i];
 		}
