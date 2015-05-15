@@ -86,10 +86,10 @@ public class ShipPlacement : StateMachine {
 		//Rotate buttons only interactable if a ship is currently being placed
 		buttons[4].interactable = !placingShip ? false: true;
 		buttons[5].interactable = !placingShip ? false: true;
-		buttons[0].interactable = ghostShipActive ? false: true;
-		buttons[1].interactable = ghostShipActive ? false: true;
-		buttons[2].interactable = ghostShipActive ? false: true;
-		buttons[3].interactable = ghostShipActive ? false: true;
+		//buttons[0].interactable = ghostShipActive && selectedShip == 0 ? false: true;
+		//buttons[1].interactable = ghostShipActive && selectedShip == 1 ? false: true;
+		//buttons[2].interactable = ghostShipActive && selectedShip == 2 ? false: true;
+		//buttons[3].interactable = ghostShipActive && selectedShip == 3 ? false: true;
 		//To ensure only clients are able to place ships
 	#if UNITY_EDITOR
 		if(Network.isClient && State == 0){
@@ -143,12 +143,12 @@ public class ShipPlacement : StateMachine {
 		//GameObject clone = Network.Instantiate()
 		if(gridScript.rotationPossible(ShipScript)&& RotateLeft){
 			//netGhostShips[selectedShip].transform.RotateAround(transform.position, Vector3.up,90);
-			ShipScript.RotateShipLeft();
+			//ShipScript.RotateShipLeft();
 			RotateLeft = false;
 		}
 		if(gridScript.rotationPossible(ShipScript) && RotateRight){
 			//netGhostShips[selectedShip].transform.RotateAround(transform.position, Vector3.up,-90);
-			ShipScript.RotateShipRight();
+			//ShipScript.RotateShipRight();
 			RotateRight = false;
 		}
 		if(!gridScript.getOccupied(ShipScript)){
@@ -167,13 +167,13 @@ public class ShipPlacement : StateMachine {
 	public void RotateShipLeft(){
 		shipScript ShipScript = netGhostShips[selectedShip].GetComponent<shipScript>();
 		netGhostShips[selectedShip].GetComponent<NetworkView>().RPC("RotateShipLeft",RPCMode.AllBuffered);
-		ShipScript.RotateShipLeft();
+		//ShipScript.RotateShipLeft();
 		RotateLeft = true;
 	}
 	public void RotateShipRight(){
 		shipScript ShipScript = netGhostShips[selectedShip].GetComponent<shipScript>();
 		netGhostShips[selectedShip].GetComponent<NetworkView>().RPC("RotateShipRight",RPCMode.AllBuffered);
-		ShipScript.RotateShipRight();
+		//ShipScript.RotateShipRight();
 		RotateRight = true;
 	}
 

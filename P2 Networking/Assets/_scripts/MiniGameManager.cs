@@ -69,12 +69,12 @@ public class MiniGameManager : MonoBehaviour {
 		if(Network.isServer){
 			SetTeamText(0);
 		}
-		if(TeamScore[0] >=MiniGameScoreMin && Network.isServer){
+		if(TeamScore[0] >=MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 1);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
 			noTasks = false;
-		}else if(TeamScore[1] >= MiniGameScoreMin && Network.isServer){
+		}else if(TeamScore[1] >= MiniGameScoreMin){
 			sNView.RPC("ChangeState",RPCMode.AllBuffered, 2);
 			sNView.RPC("SetTeamTurn",RPCMode.AllBuffered, 2);
 			nView.RPC("ResetScore", RPCMode.AllBuffered);
@@ -91,11 +91,11 @@ public class MiniGameManager : MonoBehaviour {
 	//At the beggining of each minigame round noTasks 1 & 2 are true
 	bool noTasks = true;
 	void InitializeMiniGames(){
-		if(noTasks && Network.connections.Length >= 2){
+		if(noTasks && Network.connections.Length >= 4){
 			nView.RPC("AssignNewTask",Network.connections[0]);
 			nView.RPC("AssignNewTask",Network.connections[1]);
-			//nView.RPC("AssignNewTask",Network.connections[2]);
-			//nView.RPC("AssignNewTask",Network.connections[3]);
+			nView.RPC("AssignNewTask",Network.connections[2]);
+			nView.RPC("AssignNewTask",Network.connections[3]);
 			noTasks = false;
 		}
 	}
@@ -147,6 +147,9 @@ public class MiniGameManager : MonoBehaviour {
 		if(info.sender == Network.connections[0] || info.sender == Network.connections[1] ){
 			nView.RPC("UpdateScore",Network.connections[0],0,value);
 			nView.RPC("UpdateScore",Network.connections[1],0,value);
+			nView.RPC("UpdateScore",RPCMode.Server,0,0);
+			Debug.Log("Updating Score for team 1");
+			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
 
 			/*teamText.GetComponentInChildren<Text>().text = "Team 1";
 			TeamScore[0] += value;
@@ -158,6 +161,10 @@ public class MiniGameManager : MonoBehaviour {
 		if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
 			nView.RPC("UpdateScore",Network.connections[2],1,value);
 			nView.RPC("UpdateScore",Network.connections[3],1,value);
+			nView.RPC("UpdateScore",RPCMode.Server,1,0);
+			Debug.Log("Updating Score for team 2");
+			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
+
 /*			TeamScore[1] += value;
 			Debug.Log("Current score is: " + TeamScore[0] + " for team 1 and: " + TeamScore[1] + " for team 2");
 			scoreTexts [0].GetComponent<Text> ().text = "Your teams score is: " + TeamScore[1];

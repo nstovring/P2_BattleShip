@@ -47,7 +47,7 @@ public class shipScript : MonoBehaviour {
 	void OnNetworkInstantiate(NetworkMessageInfo info) {
 		nView = GetComponent<NetworkView>();
 		Debug.Log(nView.viewID + " spawned");
-		GetComponent<BoxCollider>().enabled = false;
+		//GetComponent<BoxCollider>().enabled = false;
 		renderers = GetComponentsInChildren<MeshRenderer>();
 		sRenderes = GetComponentsInChildren<SpriteRenderer>();
 		if(Network.isServer){

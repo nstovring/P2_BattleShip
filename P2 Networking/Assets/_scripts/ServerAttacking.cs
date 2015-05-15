@@ -49,7 +49,7 @@ public class ServerAttacking : MonoBehaviour {
 			}
 		}
 	}
-
+	[RPC]
 	void DisplayGhostMarker(RaycastHit hit, int currentMarker){
 			ghostTargetMarkers[currentMarker].transform.position = hit.transform.position;
 	}
@@ -62,9 +62,11 @@ public class ServerAttacking : MonoBehaviour {
 		//nextTurn = true;
 		if(stateMachine.GetTeamTurn() == 1 && turns < maxTurns){
 		stateMachine.SetTeamTurn(2);
+			currentTargetMarker = 0;
 			turns++;
 		}else if(stateMachine.GetTeamTurn() == 2 && turns < maxTurns){
 		stateMachine.SetTeamTurn(1);
+			currentTargetMarker = 0;
 			turns++;
 		}
 		if(turns >= maxTurns){
