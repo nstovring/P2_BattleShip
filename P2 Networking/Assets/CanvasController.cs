@@ -82,4 +82,8 @@ public class CanvasController : StateMachine {
 			DisableAttackingButtons();
 		}
 	}
+
+	void EnableGameOverDisplay(){
+
+	}
 }

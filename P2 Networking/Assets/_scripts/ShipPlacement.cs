@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ShipPlacement : StateMachine {
 	public GameObject[] ships = new GameObject[4];
+	//public GameObject[] netShips = new GameObject[5];
 	public GameObject[] ghostShips = new GameObject[4];
 	public GameObject[] netGhostShips = new GameObject[4];
 
@@ -42,11 +43,7 @@ public class ShipPlacement : StateMachine {
 	}
 
 	void Start(){
-		//Instantiate Networked Ghost Ships
 		nView = GameObject.Find("_StateMachine").GetComponent<NetworkView>();
-		/*for(int i = 0; i < ships.Length; i++){
-			netGhostShips[i] = Network.Instantiate(ghostShips[i],transform.position,Quaternion.identity,0) as GameObject;
-		}*/
 	}
 
 	public void SpawnGhostShips(){
@@ -190,7 +187,7 @@ public class ShipPlacement : StateMachine {
 		//Player is no longer placing a ship
 		setPlacingShip(false);
 		ghostShipActive = false;
-		//Reset the selectedShip Variable
+		//Reset the selectedShip Variable & ghostShipActive
 		}
 	}
 }
