@@ -108,6 +108,7 @@ public class MiniGameManager : MonoBehaviour {
 	public void SetTaskDisplayerText(string task){
 		Debug.Log("SetTaskDisplayer " + task);
 		taskDisplayer.GetComponent<Text>().text = task;
+		taskDisplayer.GetComponentInParent<Image>().color = Color.green;
 	}
 	//Assign tasks to a specific player dependant on which one called the method
 	[RPC]
@@ -173,8 +174,11 @@ public class MiniGameManager : MonoBehaviour {
 		//Ensure that this integer is not equal to the previously found integer, else find a new int
 		int rngTask = rng != previousTask ? rng: Random.Range(0,miniGameButtons.Length);
 		//If any button is Active do not assign a new task
+		taskDisplayer.GetComponentInParent<Image>().color = Color.white;
+
 		for(int i = 0; i < miniGameButtons.Length; i++){
 			if(miniGameButtons[i].GetComponent<MiniGameButton>().isActive){
+				taskDisplayer.GetComponentInParent<Image>().color = Color.white;
 				return;
 			}
 		}
