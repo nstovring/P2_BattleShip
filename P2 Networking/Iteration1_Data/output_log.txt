@@ -17,7 +17,7 @@ Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networki
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.133 seconds
-desktop: 1920x1080 59Hz; virtual: 1920x2160 at 0,0
+- Completed reload, in  0.180 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
