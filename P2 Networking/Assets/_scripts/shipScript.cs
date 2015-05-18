@@ -12,23 +12,11 @@ public class shipScript : MonoBehaviour {
 	public int currentRotation = -1;
 	float hitTime = 0;
 	public GameObject[] destroyedShips = new GameObject[4];
-	GameObject stateMachine;
-	GameOverController gameOverController; 
 
-<<<<<<< HEAD
 	public NetworkView nView;
 	StateMachine statemachine;
 	void Start() {
-=======
-	 NetworkView nView;
-	 NetworkView sNView;
->>>>>>> origin/Development-NEW
 
-	void Start() {
-		nView = GetComponent<NetworkView>();
-		stateMachine = GameObject.Find("_StateMachine");
-		sNView = stateMachine.GetComponent<NetworkView>();
-		gameOverController = stateMachine.GetComponent<GameOverController>();
 	}
 
 	void Awake(){
@@ -66,16 +54,6 @@ public class shipScript : MonoBehaviour {
 			statemachine.addShip (Team, this.gameObject);
 		}
 		//GetComponent<BoxCollider>().enabled = false;
-		//if(Network.isClient){
-		if(info.sender == Network.connections[0] || info.sender == Network.connections[1] ){
-			Team = 1;
-		}else if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
-			Team = 2;
-		}else{
-			Team = -1;
-			}
-		//}
-
 		renderers = GetComponentsInChildren<MeshRenderer>();
 		sRenderes = GetComponentsInChildren<SpriteRenderer>();
 		if(Network.isServer){
@@ -94,38 +72,31 @@ public class shipScript : MonoBehaviour {
 			}
 		}
 	}
-	void SetTeam(NetworkMessageInfo info){
-		if(info.sender == Network.connections[0] || info.sender == Network.connections[1] ){
-			Team = 1;
-		}else if(info.sender == Network.connections[2] || info.sender == Network.connections[3] ){
-			Team = 2;
-		}else{
-			Team = -1;
-		}
-	}
-
 
 	[RPC]
 	//Create a destroyed version of itself on the server
 	public void Destroyed(){
-		//gameOverController.UpdateDestroyedShips(team);
-
 		foreach(MeshRenderer renderer in renderers){
 			renderer.enabled = true;
 		}
 		foreach(SpriteRenderer renderer in sRenderes){
 			renderer.enabled = true;
 		}
+		//Network.Instantiate(destroyedShips[shipType],transform.position,transform.rotation,0);
+		//Network.RemoveRPCs(nView.viewID);
+		//Network.Destroy(gameObject);
+
 	}
 	public bool dead = false;
 	// Update is called once per frame
 	void Update () {
 		if(health <= 0 && transform.tag == "Ship" && !dead){
 			Debug.Log("Ship Destroyed");
-			sNView.RPC("UpdateDestroyedShips",RPCMode.AllBuffered, Team);
 			nView.RPC("Destroyed",RPCMode.AllBuffered);
 			dead = true;
+			//Destroyed();
 		}
+
 
 		hitTime += Time.deltaTime;
 
