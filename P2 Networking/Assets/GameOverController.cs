@@ -7,7 +7,7 @@ public class GameOverController : MonoBehaviour {
 	//
 	public int[] destroyedShips = {0,0};
 	public GameObject gameOverDisplay;
-	public int destroyedShipMin = 10;
+	public int destroyedShipMin = 1;
 	NetworkView nView;
 	int player;
 	[RPC]
