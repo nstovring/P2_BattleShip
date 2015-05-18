@@ -97,7 +97,7 @@ public class shipScript : MonoBehaviour {
 	[RPC]
 	//Create a destroyed version of itself on the server
 	public void Destroyed(){
-		//gameOverController.UpdateDestroyedShips(team);
+		gameOverController.UpdateDestroyedShips(Team);
 
 		foreach(MeshRenderer renderer in renderers){
 			renderer.enabled = true;
