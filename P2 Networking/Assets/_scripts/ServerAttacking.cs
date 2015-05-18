@@ -64,10 +64,12 @@ public class ServerAttacking : MonoBehaviour {
 		stateMachine.SetTeamTurn(2);
 			currentTargetMarker = 0;
 			turns++;
+			stateMachine.GetComponent<NetworkView> ().RPC ("winCheck",RPCMode.AllBuffered);
 		}else if(stateMachine.GetTeamTurn() == 2 && turns < maxTurns){
 		stateMachine.SetTeamTurn(1);
 			currentTargetMarker = 0;
 			turns++;
+			stateMachine.GetComponent<NetworkView> ().RPC ("winCheck",RPCMode.AllBuffered);
 		}
 		if(turns >= maxTurns){
 			turns = 0;

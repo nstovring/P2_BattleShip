@@ -14,6 +14,7 @@ public class shipScript : MonoBehaviour {
 	public GameObject[] destroyedShips = new GameObject[4];
 
 	public NetworkView nView;
+	StateMachine statemachine;
 	void Start() {
 
 	}
@@ -46,7 +47,12 @@ public class shipScript : MonoBehaviour {
 		SpriteRenderer[] sRenderes; 
 	void OnNetworkInstantiate(NetworkMessageInfo info) {
 		nView = GetComponent<NetworkView>();
+		statemachine = GameObject.Find ("_StateMachine").GetComponent<StateMachine> ();
 		Debug.Log(nView.viewID + " spawned");
+		Debug.Log (Team);
+		if (placed == true) {
+			statemachine.addShip (Team, this.gameObject);
+		}
 		//GetComponent<BoxCollider>().enabled = false;
 		renderers = GetComponentsInChildren<MeshRenderer>();
 		sRenderes = GetComponentsInChildren<SpriteRenderer>();

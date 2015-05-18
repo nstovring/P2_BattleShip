@@ -6,6 +6,7 @@ public class ShipPlacement : StateMachine {
 	public GameObject[] ships = new GameObject[4];
 	public GameObject[] ghostShips = new GameObject[4];
 	public GameObject[] netGhostShips = new GameObject[4];
+	StateMachine statemachine;
 
 	public Button[] buttons = new Button[6];
 	public bool ready = false;
@@ -44,6 +45,7 @@ public class ShipPlacement : StateMachine {
 	void Start(){
 		//Instantiate Networked Ghost Ships
 		nView = GameObject.Find("_StateMachine").GetComponent<NetworkView>();
+		//statemachine = GameObject.Find ("_StateMachine").GetComponent<StateMachine> ();
 		/*for(int i = 0; i < ships.Length; i++){
 			netGhostShips[i] = Network.Instantiate(ghostShips[i],transform.position,Quaternion.identity,0) as GameObject;
 		}*/
@@ -131,6 +133,7 @@ public class ShipPlacement : StateMachine {
 				if(Input.GetMouseButtonDown(0) && !gridScript.getOccupied(ShipScript)){
 					//Send RPC Call to call the method DeployShip across the network for testing purposes
 					DeployShip();
+					Debug.Log("ship " +ShipScript.shipType + " send");
 				}
 			}
 		}
@@ -179,6 +182,8 @@ public class ShipPlacement : StateMachine {
 
 	public void DeployShip(){
 		if(placingShip){
+		//statemachine.addShipCall(int.Parse(Network.player.ToString()),ships[selectedShip]);
+		//nView.RPC("addShip",RPCMode.AllBuffered,int.Parse(Network.player.ToString()),ships[selectedShip]);
 		//Instantiate a ship at the position of the ghost ship
 		Network.Instantiate(ships[selectedShip],netGhostShips[selectedShip].transform.position,netGhostShips[selectedShip].transform.rotation,0);
 		//Move the ghost ship away
