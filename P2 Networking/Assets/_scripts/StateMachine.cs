@@ -60,6 +60,8 @@ public class StateMachine : MonoBehaviour {
 		if(readyPlayers >= readyPlayerMin){
 			StartCoroutine("CountDownToNextPhase");
 		//nView.RPC("ChangeState", RPCMode.AllBuffered,1);
+		}else{
+			StopCoroutine("CountDownToNextPhase");
 		}
 	}
 
