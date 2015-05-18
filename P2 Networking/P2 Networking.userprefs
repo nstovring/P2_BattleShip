@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\MiniGameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\ServerAttacking.cs">
     <Files>
-      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="178" Column="3" />
+      <File FileName="Assets\_scripts\ServerAttacking.cs" Line="14" Column="27" />
+      <File FileName="Assets\_scripts\MiniGameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\ShipPlacement.cs" Line="1" Column="1" />
-      <File FileName="Assets\GameOverController.cs" Line="11" Column="6" />
-      <File FileName="Assets\_scripts\ServerAttacking.cs" Line="127" Column="5" />
+      <File FileName="Assets\GameOverController.cs" Line="1" Column="1" />
       <File FileName="Assets\CanvasController.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\shipScript.cs" Line="1" Column="1" />
       <File FileName="Assets\EventManager.cs" Line="1" Column="1" />
