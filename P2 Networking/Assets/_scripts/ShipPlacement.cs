@@ -90,7 +90,9 @@ public class ShipPlacement : StateMachine {
 		//To ensure only clients are able to place ships
 	#if UNITY_EDITOR
 		if(Network.isClient && State == 0){
-		Placement();
+		//Placement();
+			AndroidPlacement();
+
 		}
 	#elif UNITY_STANDALONE_WIN
 		if(Network.isClient && State == 0){

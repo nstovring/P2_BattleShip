@@ -46,7 +46,7 @@ public class CanvasController : StateMachine {
 	}
 
 	void EnablePlacementButtons(){
-		placementButtonParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+		placementButtonParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,50);
 	}
 	void EnableAttackingButtons(){
 		for(int i = 0; i< attackingButtons.Length; i++){
