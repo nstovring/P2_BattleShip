@@ -9,14 +9,16 @@ public class ServerAttacking : MonoBehaviour {
 	public StateMachine stateMachine;
 	public Text countDownTimerTextBox;
 	public GameObject[] targetMarkers = new GameObject[2];
-	public GameObject[] ghostTargetMarkers = new GameObject[2];
+	public GameObject[] ghostTargetMarkers = new GameObject[5];
 	public LayerMask mylayerMask;
+	public int shotAmount = 5;
 	//private int gridLayer = 1<< 8;
 	int currentTargetMarker = 0;
 	//bool nextTurn = false;
 	public float nextTurnTimer = 3f;
-	public int turns = 0;
+	public int turnsPassed = 0;
 	public int maxTurns = 5;
+	public float turnCountdownTimer = 3f;
 	public float countdownTimer = 5f;
 	NetworkView nView;
 	//StateMachine stateMachine;
@@ -31,6 +33,13 @@ public class ServerAttacking : MonoBehaviour {
 		if(Network.isServer && stateMachine.GetState() == 2){
 			SelectTarget();
 		}
+		if(turnCountdownTimer <= 0){
+			//StopCoroutine("TurnCoolDown");
+		}
+	}
+	Transform movedMarker = null;
+	void MoveMarkers(){
+
 	}
 
 	void SelectTarget(){
@@ -41,12 +50,21 @@ public class ServerAttacking : MonoBehaviour {
 			//if()
 			if(hit.transform.tag == "GridSquare"){
 				//If left mousebutton pressed
-				if(Input.GetMouseButtonDown(0) && currentTargetMarker < 2){
+				if(movedMarker != null){
+					movedMarker.parent.position = hit.transform.position;
+					//if(Input.GetMouseButtonDown(0)){
+					movedMarker = null;
+					//}
+				}else if(Input.GetMouseButtonDown(0) && currentTargetMarker < shotAmount){
 					//Instantiate some sort of attacking gameobject with a collider
 					DisplayGhostMarker(hit, currentTargetMarker);
 					currentTargetMarker ++;
 				}
 			}
+			if(hit.transform.tag == "GhostTargetMarker"  && Input.GetMouseButtonDown(0)){
+				movedMarker = hit.transform;
+			}
+
 		}
 	}
 	[RPC]
@@ -54,15 +72,33 @@ public class ServerAttacking : MonoBehaviour {
 			ghostTargetMarkers[currentMarker].transform.position = hit.transform.position;
 	}
 
+	[RPC]
+	void SetShots(int shots){
+		shotAmount = shots;
+	}
+
+	//Change the amount of shots depending on the current turn
+	void CheckTurn(){
+		if(turnsPassed == 0 || turnsPassed == 2){
+			shotAmount = 4;
+		}else if(turnsPassed == 1 || turnsPassed == 3){
+			shotAmount = 5;
+		}
+	}
+
 	public void FireSalvo(){
 		foreach(GameObject ghostTargetMarker in ghostTargetMarkers){
 			nView.RPC("DeployTargetMarker",RPCMode.AllBuffered, ghostTargetMarker.transform.position);
+			ghostTargetMarker.transform.position = new Vector3(50,0,50);
 		}
+		//foreach(GameObject )
 		currentTargetMarker = 0;
-		//nextTurn = true;
-		if(stateMachine.GetTeamTurn() == 1 && turns < maxTurns){
-		stateMachine.SetTeamTurn(2);
+		if(stateMachine.GetTeamTurn() == 1 && turnsPassed < maxTurns){
+			StartCoroutine("TurnCoolDown", 2);
+			/*
+			stateMachine.SetTeamTurn(2);
 			currentTargetMarker = 0;
+<<<<<<< HEAD
 			turns++;
 			stateMachine.GetComponent<NetworkView> ().RPC ("winCheck",RPCMode.AllBuffered);
 		}else if(stateMachine.GetTeamTurn() == 2 && turns < maxTurns){
@@ -70,41 +106,49 @@ public class ServerAttacking : MonoBehaviour {
 			currentTargetMarker = 0;
 			turns++;
 			stateMachine.GetComponent<NetworkView> ().RPC ("winCheck",RPCMode.AllBuffered);
+=======
+			turnsPassed++;*/
+		}else if(stateMachine.GetTeamTurn() == 2 && turnsPassed < maxTurns){
+			StartCoroutine("TurnCoolDown", 1);
+			/*
+			stateMachine.SetTeamTurn(1);
+			currentTargetMarker = 0;
+			turnsPassed++;*/
+>>>>>>> origin/Development-NEW
 		}
-		if(turns >= maxTurns){
-			turns = 0;
+		if(turnsPassed >= maxTurns){
+			turnsPassed = 0;
 			StartCoroutine("CountDownToNextPhase");
-			/*stateMachine.SetTeamTurn(0);
-			countdownTimer -= Time.deltaTime * 1;
-			countDownTimerTextBox.text = "Calibrate your ships in: " + Mathf.RoundToInt(countdownTimer);
-			if(countdownTimer <= 0){
-			countDownTimerTextBox.text = "GO!";
-			nView.RPC("ChangeState",RPCMode.AllBuffered,1);
-			turns = 0;*/
-			//}
+		}else{
+			StopCoroutine("CountDownToNextPhase");
 		}
 	}
-	
+	IEnumerator TurnCoolDown(int num){
+		//Wait for 2 seconds before continuing
+		yield return new WaitForSeconds(2);
+		stateMachine.SetTeamTurn(num);
+		currentTargetMarker = 0;
+		turnsPassed++;
+		turnCountdownTimer = 3f;
+		CheckTurn();
+		StopCoroutine("TurnCoolDown");
+	}
+
 	IEnumerator CountDownToNextPhase(){
 		stateMachine.SetTeamTurn(0);
-		//countdownTimer -= Time.deltaTime * 1;
 		countDownTimerTextBox.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5, 285);
 		while(countdownTimer > 0f){
 			countdownTimer -= Time.deltaTime * 1;
 			countDownTimerTextBox.text = "Calibrate your ships in: " + Mathf.RoundToInt(countdownTimer);
 			yield return null;
 		}
-		//if(countdownTimer <= 0){
 		countDownTimerTextBox.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5, 800);
 
-		countDownTimerTextBox.text = "GO!";
 		nView.RPC("ChangeState",RPCMode.AllBuffered,1);
-		countdownTimer = 0f;
-		//turns = 0;
+		countdownTimer = 11f;
 		StopCoroutine("CountDownToNextPhase");
 
 		yield return null;
-		//}
 	}
 
 
