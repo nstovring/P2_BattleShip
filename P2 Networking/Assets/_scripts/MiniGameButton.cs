@@ -38,7 +38,6 @@ public class MiniGameButton : MiniGameManager {
 				isActive = false;
 				setTask = false;
 				mNView.RPC("InquireNewTask", RPCMode.Server, Network.player);
-				//nView.RPC ("RPCCompletedTask", RPCMode.Server, int.Parse (Network.player.ToString ()));
 				mNView.RPC("RequestScoreUpdate",RPCMode.Server,1);
 			} 
 		else if (!isActive && Network.isClient) {
@@ -51,7 +50,7 @@ public class MiniGameButton : MiniGameManager {
 		isActive = true;
 	}
 
-	//The server will call the Deactivate method serverSide (this is probably redundant?)
+	/*//The server will call the Deactivate method serverSide (this is probably redundant?)
 	[RPC]
 	void RPCCompletedTask(int sender){
 		int thisPlayer = int.Parse(Network.player.ToString());
@@ -65,5 +64,5 @@ public class MiniGameButton : MiniGameManager {
 		isActive = false;
 		setTask = false;
 		mNView.RPC("InquireNewTask", RPCMode.Server, Network.player);
-	}
+	}*/
 }

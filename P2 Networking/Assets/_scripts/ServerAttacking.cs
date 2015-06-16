@@ -43,20 +43,14 @@ public class ServerAttacking : MonoBehaviour {
 	}
 
 	void SelectTarget(){
-		//nView = GetComponent<NetworkView>();
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray,out hit, 100,mylayerMask)){
-			//if()
 			if(hit.transform.tag == "GridSquare"){
-				//If left mousebutton pressed
 				if(movedMarker != null){
 					movedMarker.parent.position = hit.transform.position;
-					//if(Input.GetMouseButtonDown(0)){
 					movedMarker = null;
-					//}
 				}else if(Input.GetMouseButtonDown(0) && currentTargetMarker < shotAmount){
-					//Instantiate some sort of attacking gameobject with a collider
 					DisplayGhostMarker(hit, currentTargetMarker);
 					currentTargetMarker ++;
 				}
@@ -64,9 +58,9 @@ public class ServerAttacking : MonoBehaviour {
 			if(hit.transform.tag == "GhostTargetMarker"  && Input.GetMouseButtonDown(0)){
 				movedMarker = hit.transform;
 			}
-
 		}
 	}
+	
 	[RPC]
 	void DisplayGhostMarker(RaycastHit hit, int currentMarker){
 			ghostTargetMarkers[currentMarker].transform.position = hit.transform.position;
@@ -77,12 +71,14 @@ public class ServerAttacking : MonoBehaviour {
 		shotAmount = shots;
 	}
 
+
 	//Change the amount of shots depending on the current turn
+	[RPC]
 	void CheckTurn(){
 		if(turnsPassed == 0 || turnsPassed == 2){
-			shotAmount = 4;
+			shotAmount = 6;
 		}else if(turnsPassed == 1 || turnsPassed == 3){
-			shotAmount = 5;
+			shotAmount = 4;
 		}
 	}
 
@@ -91,20 +87,12 @@ public class ServerAttacking : MonoBehaviour {
 			nView.RPC("DeployTargetMarker",RPCMode.AllBuffered, ghostTargetMarker.transform.position);
 			ghostTargetMarker.transform.position = new Vector3(50,0,50);
 		}
-		//foreach(GameObject )
 		currentTargetMarker = 0;
 		if(stateMachine.GetTeamTurn() == 1 && turnsPassed < maxTurns){
 			StartCoroutine("TurnCoolDown", 2);
-			/*
-			stateMachine.SetTeamTurn(2);
-			currentTargetMarker = 0;
-			turnsPassed++;*/
 		}else if(stateMachine.GetTeamTurn() == 2 && turnsPassed < maxTurns){
 			StartCoroutine("TurnCoolDown", 1);
-			/*
-			stateMachine.SetTeamTurn(1);
-			currentTargetMarker = 0;
-			turnsPassed++;*/
+	
 		}
 		if(turnsPassed >= maxTurns){
 			turnsPassed = 0;
@@ -113,15 +101,22 @@ public class ServerAttacking : MonoBehaviour {
 			StopCoroutine("CountDownToNextPhase");
 		}
 	}
+
 	IEnumerator TurnCoolDown(int num){
 		//Wait for 2 seconds before continuing
 		yield return new WaitForSeconds(2);
 		stateMachine.SetTeamTurn(num);
 		currentTargetMarker = 0;
-		turnsPassed++;
+		//turnsPassed++;
+		nView.RPC("IncrementTurnPassed",RPCMode.AllBuffered);
 		turnCountdownTimer = 3f;
-		CheckTurn();
+		nView.RPC("CheckTurn",RPCMode.AllBuffered);
 		StopCoroutine("TurnCoolDown");
+	}
+
+	[RPC]
+	void IncrementTurnPassed(){
+		turnsPassed++;
 	}
 
 	IEnumerator CountDownToNextPhase(){

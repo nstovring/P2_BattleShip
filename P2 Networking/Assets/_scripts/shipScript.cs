@@ -97,7 +97,7 @@ public class shipScript : MonoBehaviour {
 	[RPC]
 	//Create a destroyed version of itself on the server
 	public void Destroyed(){
-		gameOverController.UpdateDestroyedShips(Team);
+		//gameOverController.UpdateDestroyedShips(Team);
 
 		foreach(MeshRenderer renderer in renderers){
 			renderer.enabled = true;
@@ -146,11 +146,12 @@ public class shipScript : MonoBehaviour {
 	public int targetMarkers = 0;
 	void OnTriggerStay(Collider others){
 		if(others.transform.tag == "TargetMarker"){
-			if(others.transform.GetComponent<TargetMarker>().hit == false){
+			TargetMarker targetMarker = others.transform.GetComponent<TargetMarker>();
+			if(targetMarker.hit == false){
 			targetMarkers++;
 			Hit();
-			others.transform.GetComponent<TargetMarker>().ChangeColor();
-			others.transform.GetComponent<TargetMarker>().hit = true;
+			targetMarker.ChangeColor();
+			targetMarker.hit = true;
 			}
 		}
 	}

@@ -57,14 +57,12 @@ public class GridScript : MonoBehaviour {
 
 	//Get occupied checks wether or not a ship is able to be placed at a position
 	public bool getOccupied(shipScript shipScript){
-
 		//temporary boolean
 		bool tempOccupied = true;
 		//Loop which iterates the amount of grids which the ship would cover
 		for(int i = 0; i < shipScript.getGridInfluence(); i++){
-			//relative to this grids position in the grids array, this if statement will check wether or not the grid below or above and 
-			//next to it is occupied as well as checking if the grid even exists
-
+			//relative to this grids position in the grids array, this if statement will check wether or not the grid 
+			//below or above and next to it is occupied as well as checking if the grid even exists
 			if(shipScript.GetRotation() == 1 && grids[row- i,collumn] != null && grids[row + i,collumn] != null){
 				// If the grids on this axis are unoccupied return false else true
 				if(!grids[row- i,collumn].getOccupied() && !grids[row + i,collumn].getOccupied()){
@@ -82,7 +80,7 @@ public class GridScript : MonoBehaviour {
 				}
 			}
 		}
-		//If no if statements go through simply return tempOccupied
+		//If no if statements conditions are true through simply return tempOccupied which is false
 		return tempOccupied;
 	}
 }

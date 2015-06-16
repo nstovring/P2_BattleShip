@@ -1,7 +1,7 @@
 Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [igdumdim32.dll 10.18.14.4029]
+    Version:  Direct3D 9.0c [igdumdim32.dll 10.18.14.4170]
     Renderer: Intel(R) HD Graphics Family
     Vendor:   Intel
     VRAM:     1792 MB (via DXGI)
@@ -17,7 +17,452 @@ Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networki
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.180 seconds
+- Completed reload, in  0.200 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.Core.dll (this message is harmless)
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1713)
+
+Platform assembly: C:\Users\nstovring\Documents\GitHub\P2_BattleShip\P2 Networking\Iteration1_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2880 -> priority: 1 
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Current score is: 0 for team 1 and: 0 for team 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MiniGameManager.UpdateScore (Int32 team, Int32 value) [0x00000] in <filename unknown>:0 
+UnityEngine.NetworkView:Internal_RPC(NetworkView, String, RPCMode, Object[])
+UnityEngine.NetworkView:RPC(String, RPCMode, Object[])
+MiniGameManager:ResetScore()
+MiniGameManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+Server Joined Player ID is 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+AllocatedID: 50 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:SpawnGhostShips()
+NetworkManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 51 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:SpawnGhostShips()
+NetworkManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 52 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:SpawnGhostShips()
+NetworkManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 53 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:SpawnGhostShips()
+NetworkManager:OnConnectedToServer()
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 54 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+UnityEngine.Events.InvokableCall:Invoke(Object[])
+UnityEngine.Events.InvokableCallList:Invoke(Object[])
+UnityEngine.Events.UnityEventBase:Invoke(Object[])
+UnityEngine.Events.UnityEvent:Invoke()
+UnityEngine.UI.Button:Press()
+UnityEngine.UI.Button:OnPointerClick(PointerEventData)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 55 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+UnityEngine.Events.InvokableCall:Invoke(Object[])
+UnityEngine.Events.InvokableCallList:Invoke(Object[])
+UnityEngine.Events.UnityEventBase:Invoke(Object[])
+UnityEngine.Events.UnityEvent:Invoke()
+UnityEngine.UI.Button:Press()
+UnityEngine.UI.Button:OnPointerClick(PointerEventData)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 56 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 57 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IndexOutOfRangeException: Array index is out of range.
+  at GridScript.getOccupied (.shipScript shipScript) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.DisplayGhostShip (RaycastHit hit) [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Placement () [0x00000] in <filename unknown>:0 
+  at ShipPlacement.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 58 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 59 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 60 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 61 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 62 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+AllocatedID: 63 spawned
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+IndexOutOfRangeException: Array index is out of range.
+  at shipScript.OnNetworkInstantiate (NetworkMessageInfo info) [0x00000] in <filename unknown>:0 
+UnityEngine.Network:INTERNAL_CALL_Instantiate(Object, Vector3&, Quaternion&, Int32)
+UnityEngine.Network:Instantiate(Object, Vector3, Quaternion, Int32)
+ShipPlacement:DeployShip()
+ShipPlacement:Placement()
+ShipPlacement:Update()
+ 
+(Filename:  Line: -1)
+
+I am ready
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Some is Ready:0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+

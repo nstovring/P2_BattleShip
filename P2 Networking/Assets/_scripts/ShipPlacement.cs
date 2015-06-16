@@ -73,6 +73,7 @@ public class ShipPlacement : StateMachine {
 		if(ready && !readySet){
 			//Disable place ship button
 			buttons[6].interactable = false;
+			buttons[7].interactable = false;
 			Debug.Log("I am ready");
 			//Call CheckforReady method on the StateMachine
 			nView.RPC("CheckForReady", RPCMode.AllBuffered,1);
@@ -107,10 +108,10 @@ public class ShipPlacement : StateMachine {
 
 	void AndroidPlacement(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
 		if (Physics.Raycast(ray,out hit, 100,gridLayer)){
 			if(hit.transform.tag == "GridSquare" && placingShip){
-				//Gather the code from the currently targeted grid and the currently selected ship
+				//Call the DisplayGhostShip method and provide the position
+				//in which the grid that has been hit is.
 				DisplayGhostShip(hit);
 			}
 		}
@@ -139,15 +140,10 @@ public class ShipPlacement : StateMachine {
 		ghostShipActive = true;
 	 	shipScript ShipScript = netGhostShips[selectedShip].GetComponent<shipScript>();
 		GridScript gridScript = hit.transform.GetComponent<GridScript>();
-		//GameObject clone = Network.Instantiate()
 		if(gridScript.rotationPossible(ShipScript)&& RotateLeft){
-			//netGhostShips[selectedShip].transform.RotateAround(transform.position, Vector3.up,90);
-			//ShipScript.RotateShipLeft();
 			RotateLeft = false;
 		}
 		if(gridScript.rotationPossible(ShipScript) && RotateRight){
-			//netGhostShips[selectedShip].transform.RotateAround(transform.position, Vector3.up,-90);
-			//ShipScript.RotateShipRight();
 			RotateRight = false;
 		}
 		if(!gridScript.getOccupied(ShipScript)){
@@ -179,7 +175,8 @@ public class ShipPlacement : StateMachine {
 	public void DeployShip(){
 		if(placingShip){
 		//Instantiate a ship at the position of the ghost ship
-		Network.Instantiate(ships[selectedShip],netGhostShips[selectedShip].transform.position,netGhostShips[selectedShip].transform.rotation,0);
+		Network.Instantiate(ships[selectedShip],netGhostShips[selectedShip].transform.position,
+			                    netGhostShips[selectedShip].transform.rotation,0);
 		//Move the ghost ship away
 		netGhostShips[selectedShip].transform.position = new Vector3(50,0,0);
 		//Reduce amount of ships Avaliable
